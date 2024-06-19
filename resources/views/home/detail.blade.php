@@ -217,6 +217,7 @@
 </section>
 <!-- Discount action Ends -->
 <h1>test github</h1>
+<h2>test kedua</h2>
 <!-- partner starts -->
 <section class="our-partner pb-6 pt-6">
     <div class="container">
