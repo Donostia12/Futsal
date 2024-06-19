@@ -216,7 +216,7 @@
     <div class="section-shape  top-inherit bottom-0" style="background-image: url(images/shape6.png);"></div>
 </section>
 <!-- Discount action Ends -->
-
+<h1>test github</h1>
 <!-- partner starts -->
 <section class="our-partner pb-6 pt-6">
     <div class="container">
