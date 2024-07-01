@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\image;
 use App\Models\kecamatan;
 use App\Models\lapangan;
+use App\Models\Operation;
+use App\Models\review;
 use Illuminate\Http\Request;
 
 class LapanganController extends Controller
@@ -76,7 +78,9 @@ class LapanganController extends Controller
 
         $kec = kecamatan::where('id', $lapangan->id_kecamatan)->first();
         $image = image::where('id_lapangan', $id)->get();
-        return view('home.detail',compact('lapangan','kecamatan','image','kec','profile'));
+        $jadwal = Operation::where('id_lapangan', $id)->first();
+        $review = review::where('id_lapangan', $id)->get();
+        return view('home.detail',compact('lapangan','kecamatan','image','kec','profile','jadwal','id' ,'review'));
     }
     /**
      * Show the form for creating a new resource.
@@ -111,7 +115,7 @@ class LapanganController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**

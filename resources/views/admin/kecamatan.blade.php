@@ -7,7 +7,7 @@
             <h4 class="card-title">Management Kecamatan</h4>
         </div>
         <div class="card-body">
-            <a href="{{route('kecamatan.create')}}">   <button type="button" class="btn btn-rounded btn-info"><span
+            <a href="{{route('kecamatan-create')}}">   <button type="button" class="btn btn-rounded btn-info"><span
                 class="btn-icon-start text-info"><i class="fa fa-plus color-info"></i>
             </span>Add</button>
         </div></a>

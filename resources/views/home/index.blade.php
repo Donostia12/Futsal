@@ -122,8 +122,9 @@
     <script>
         var latitude = {{$item->latitude}};
         var longitude = {{$item->longitude}};
+        var name = '{{$item->name}}';
         // Use the latitude and longitude values here
-        var marker = L.marker([latitude, longitude]).addTo(map);
+        var marker = L.marker([latitude, longitude]).addTo(map).bindPopup(name);
     </script>
 @endforeach
 

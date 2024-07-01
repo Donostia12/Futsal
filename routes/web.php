@@ -7,6 +7,8 @@ use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\LapanganController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\OperationController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\LocationMiddleware;
@@ -31,6 +33,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::resource('lapangan', LapanganController::class);
     route::resource('kecamatan', KecamatanController::class);
     Route::resource('image', ImageController::class);
+    Route::resource('operation',OperationController::class);
+    Route::resource('review',ReviewController::class);
+    Route::view('/kecamatan-create', 'admin.kecamatan-create')->name('kecamatan-create');
 });
 
 

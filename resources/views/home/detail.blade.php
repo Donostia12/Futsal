@@ -23,7 +23,7 @@
 <section class="trending pt-6 pb-0 bg-lgrey">
     <div class="container">
         <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-8">
                 <div class="single-content">
                     <div id="highlight" class="mb-4">
                         <div class="single-full-title border-b mb-2 pb-2">
@@ -91,7 +91,15 @@
                             </div>
                         </div>
                     </div>
-
+                    
+                    @foreach ($review as $item)
+                        
+                    <div  id="single-review" class="single-review mb-4">
+                        <h3>{{$item->name}}</h3>
+                        <h4>{{$item->desc}}</h4>
+                    </div>
+                    @endforeach
+                    
                     <div  id="single-review" class="single-review mb-4">
                         <h4>Average Reviews</h4>
                         <div class="row d-flex align-items-center">
@@ -148,31 +156,32 @@
                             </div>
                         </div>
                     </div>
-
-
+                  
                     <!-- blog review -->
                     <div  id="single-add-review" class="single-add-review">
                         <h4>Write a Review</h4>
-                        <form>
+                        <form action="{{route('review.store')}}" method="POST">
+                            @csrf
                             <div class="row">
+                                <input type="text" name="id_lap" value="{{$id}}" hidden>
                                 <div class="col-md-6">
                                     <div class="form-group mb-2">
-                                        <input type="text" placeholder="Name">
+                                        <input type="text" name="name" class="form-control" placeholder="Name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group mb-2">
-                                        <input type="email" placeholder="Email">
+                                        <input type="email" name="email" class="form-control" placeholder="Email" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group mb-2">
-                                        <textarea>Comment</textarea>
+                                        <textarea name="desc" class="form-control" placeholder="Comment" required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-btn">
-                                        <a href="#" class="nir-btn">Submit Review</a>
+                                        <button type="submit" class="nir-btn">Submit Review</button>
                                     </div>
                                 </div>
                             </div>
@@ -180,86 +189,67 @@
                     </div>
                 </div>
             </div>
-
             <!-- sidebar starts -->
-            <div class="col-lg-2">isi Side Bar</div>
+            <div class="col-lg-4">
+                <br>
+                <br>
+                <h1>jadwal Operasional</h1>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Open</th>
+                            <th>Close</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monday</td>
+                            <td>{{$jadwal->senin_buka}}</td>
+                            <td>{{$jadwal->senin_tutup}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tuesday</td>
+                            <td>{{$jadwal->senin_buka}}</td>
+                            <td>{{$jadwal->senin_tutup}}</td>
+                        </tr>
+                        <tr>
+                            <td>Wednesday</td>
+                            <td>{{$jadwal->senin_buka}}</td>
+                            <td>{{$jadwal->senin_tutup}}</td>
+                        </tr>
+                        <tr>
+                            <td>Thursday</td>
+                            <td>{{$jadwal->senin_buka}}</td>
+                            <td>{{$jadwal->senin_tutup}}</td>
+                        </tr>
+                        <tr>
+                            <td>Friday</td>
+                            <td>{{$jadwal->senin_buka}}</td>
+                            <td>{{$jadwal->senin_tutup}}</td>
+                        </tr>
+                        <tr>
+                            <td>Saturday</td>
+                            <td>{{$jadwal->senin_buka}}</td>
+                            <td>{{$jadwal->senin_tutup}}</td>
+                        </tr>
+                        <tr>
+                            <td>Sunday</td>
+                            <td>{{$jadwal->senin_buka}}</td>
+                            <td>{{$jadwal->senin_tutup}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </section>
 <!-- top Destination ends -->
 
-<!-- Discount action starts -->
-<section class="discount-action pt-0" style="background-image:url(images/section-bg1.png); background-position:center;">
-    <div class="container">
-        <div class="call-banner rounded pt-10 pb-14">
-            <div class="call-banner-inner w-75 mx-auto text-center px-5">
-                <div class="trend-content-main">
-                    <div class="trend-content mb-5 pb-2 px-5">
-                        <h5 class="mb-1 theme">Love Where Your're Going</h5>
-                        <h2><a href="detail-fullwidth.html">Explore Your Life, <span class="theme1"> Travel Where You Want!</span></a></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                    <div class="video-button text-center position-relative">
-                         <div class="call-button text-center">
-                            <button type="button" class="play-btn js-video-button" data-video-id="152879427" data-channel="vimeo">
-                                <i class="fa fa-play bg-blue"></i>
-                            </button>
-                        </div>
-                        <div class="video-figure"></div>
-                    </div>
-                </div>
-            </div>
-        </div>     
-    </div>    
-    <div class="white-overlay"></div>
-    <div class="white-overlay"></div>
-    <div class="section-shape  top-inherit bottom-0" style="background-image: url(images/shape6.png);"></div>
-</section>
+
 <!-- Discount action Ends -->
 
-<!-- partner starts -->
-<section class="our-partner pb-6 pt-6">
-    <div class="container">
-        <div class="section-title mb-6 w-75 mx-auto text-center">
-            <h4 class="mb-1 theme1">Our Partners</h4>
-            <h2 class="mb-1">Our Awesome <span class="theme">partners</span></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-        </div>
-        <div class="row align-items-center partner-in partner-slider">
-            <div class="col-md-3 col-sm-6">
-                <div class="partner-item p-4 py-2 rounded bg-lgrey">
-                    <img src="images/cl-1.png" alt="">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="partner-item p-4 py-2 rounded bg-lgrey">
-                    <img src="images/cl-5.png" alt="">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="partner-item p-4 py-2 rounded bg-lgrey">
-                    <img src="images/cl-2.png" alt="">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="partner-item p-4 py-2 rounded bg-lgrey">
-                    <img src="images/cl-3.png" alt="">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="partner-item p-4 py-2 rounded bg-lgrey">
-                    <img src="images/cl-4.png" alt="">
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="partner-item p-4 py-2 rounded bg-lgrey">
-                    <img src="images/cl-5.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    
-</section>
+
 <script>
      const map = L.map('map').setView([-8.675050, 115.217402], 13);
      const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {

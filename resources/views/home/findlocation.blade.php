@@ -42,8 +42,6 @@
         function showPosition(position) {
             let latitude = position.coords.latitude;
             let longitude = position.coords.longitude;
-
-            // Send the location data to the API
             $.ajax({
                 url: 'http://127.0.0.1:8000/api/findlapangan',
                 type: 'POST',

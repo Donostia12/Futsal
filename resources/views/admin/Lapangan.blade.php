@@ -54,6 +54,7 @@
                                         <button type="submit" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
                                     </form>
                                     <a href="{{ route('image.show', $item['id']) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-image"></i></a>
+                                    <a href="{{ route('operation.show', $item['id']) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-clock"></i></a>
                                 </div>												
                             </td>												
                         </tr>
