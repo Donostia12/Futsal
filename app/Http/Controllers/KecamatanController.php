@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\kecamatan;
 use App\Models\lapangan;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Return_;
 
 class KecamatanController extends Controller
 {
@@ -35,13 +36,14 @@ class KecamatanController extends Controller
         $kecamatan->save();
         return redirect()->route('kecamatan.index')->with('success', 'Kecamatan success di buat');
     }
+    
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+       
     }
 
     /**
@@ -49,7 +51,8 @@ class KecamatanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $kecamatan = kecamatan::find($id);
+        return view('admin.kecamatan-show', compact('kecamatan'));
     }
 
     /**
@@ -57,7 +60,11 @@ class KecamatanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $kecamatan = new kecamatan();
+        $kecamatan = kecamatan::findOrFail($id);
+        $kecamatan->name = $request->input('name');
+        $kecamatan->update();
+        return redirect()->route('kecamatan.index')->with('success', 'Kecamatan success di perbaharui');
     }
 
     /**

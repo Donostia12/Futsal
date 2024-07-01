@@ -14,8 +14,6 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\LocationMiddleware;
 use App\Models\User;
 
-
-
 Route::get('/location', [LocationController::class, 'index'])->name('location');
 route::get('/', [IndexController::class, 'index'])->name('home'); 
 route::get('/login',[UserController::class, 'index']);

@@ -115,7 +115,10 @@ class LapanganController extends Controller
      */
     public function show(string $id)
     {
-        
+        $data = lapangan::where('id', $id)->first();
+        $kecamatan = kecamatan::all();
+        $kecamatanold = kecamatan::where('id', $data->id_kecamatan)->first();
+        return view('admin.lapangan-show',compact('data','kecamatan','kecamatanold'));
     }
 
     /**
@@ -131,9 +134,23 @@ class LapanganController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
+        $lapangan = Lapangan::findOrFail($id);
+        
+        $lapangan->name = $request->input('name');
+        $lapangan->id_kecamatan = $request->input('kecamatan');
+        $lapangan->latitude = $request->input('latitude');
+        $lapangan->longitude = $request->input('longitude');
+        $lapangan->harga = $request->input('harga');
+        $lapangan->desc = $request->input('desc');
+        $lapangan->alamat = $request->input('alamat');
+        $lapangan->telp = $request->input('telp');
+        $lapangan->jml_lapangan = $request->input('jml');
+        
+        $lapangan->save();
+        return redirect()->route('lapangan.index')->with('success', 'Lapangan berhasil diupdate');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
