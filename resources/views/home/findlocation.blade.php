@@ -3,14 +3,14 @@
 <section class="trending pb-0">
     <div class="container">
         <div class="row align-items-center justify-content-between mb-6 ">
-            <div class="col-lg-7">
+            {{-- <div class="col-lg-7">
                 <div class="section-title text-center text-lg-start">
                     <h4 class="mb-1 theme1">Top Pick</h4>
                     <h2 class="mb-1">Best <span class="theme">Tour Packages</span></h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore.</p>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-lg-5">
 
             </div>
@@ -84,7 +84,7 @@
                     let lapanganHtml = '';
                     
                     if (index === 0) {
-                        lapanganHtml += '<h2 class="mb-1">Lokasi <span class="theme">Terdekat</span></h2>';
+                        lapanganHtml += '<h2 class="mb-1">Lokasi <span class="mb1">Terdekat</span></h2>';
                         lapanganHtml += '<h3 class="mb-1"><a href="/detail/' + lapangan.id + '">' + lapangan.name +'<span> ' + lapangan.distance + ' Km </span>'+'</a></h3>';
                     }
                     
@@ -98,7 +98,7 @@
                                 <div class="trend-content p-4 pt-5 position-relative">
                                     <div class="trend-meta bg-theme white px-3 py-2 rounded">
                                         <div class="entry-author">
-                                            <i class="icon-calendar"></i>
+                                            <i class="icon-location-pin"></i> 
                                             <span class="fw-bold">${lapangan.distance} km</span>
                                         </div>
                                     </div>
@@ -117,7 +117,7 @@
                                     <p class="border-b pb-2 mb-2">${lapangan.desc}</p>
                                     <div class="entry-meta">
                                         <div class="entry-author d-flex align-items-center">
-                                            <p class="mb-0"><span class="theme fw-bold fs-5">${lapangan.harga}</span> | Per person</p>
+                                            <p class="mb-0"><span class="theme fw-bold fs-5">${lapangan.harga}</span> | Per Hour</p>
                                         </div>
                                     </div>
                                 </div>

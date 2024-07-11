@@ -29,7 +29,7 @@
                         <div class="single-full-title border-b mb-2 pb-2">
                             <div class="single-title">
                                 <h2 class="mb-1">{{$lapangan->name}}</h2>
-                                <h3 class="mb-1"> <span>{{$lapangan->harga}} </span> Per-Orangs</h3>
+                                <h3 class="mb-1">Rp. <span>{{$lapangan->harga}} </span> /Hours</h3>
                                 <div class="rating-main d-flex align-items-center">
                                     <p class="mb-0 me-2"><i class="icon-location-pin"></i> {{$lapangan->alamat}}</p>
                                    

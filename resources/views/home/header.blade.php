@@ -52,7 +52,7 @@
                         <div class="navbar-collapse1 d-flex align-items-center" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav" id="responsive-menu">
                                 <li class="dropdown submenu active">
-                                    <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <i class="icon-arrow-down" aria-hidden="true"></i></a>
+                                    <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
                                    
                                 </li>
 
@@ -60,7 +60,6 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lapangan <i class="icon-arrow-down" aria-hidden="true"></i></a> 
                                     <ul class="dropdown-menu">
                                         <li><a href="{{route('list')}}">List Futsal</a></li>
-                                        <li><a href="{{route('location')}}">Cari Langsung </a></li>
                                         <li class="submenu dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kecamatan<i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                             <ul class="dropdown-menu">
@@ -72,16 +71,12 @@
                                         </li>
                                     </ul> 
                                 </li>
-                               
-                              
-                                
-                                <li class="search-main"><a href="#search1" class="mt_search"><i class="fa fa-search"></i></a></li>
                             </ul>
                         </div><!-- /.navbar-collapse -->  
                         <div class="register-login d-flex align-items-center">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="me-3">
+                            {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="me-3">
                                 <i class="icon-user"></i> Login/Register
-                            </a>
+                            </a> --}}
                             <a href="{{route('location')}}" class="nir-btn white">Search Now</a>
                         </div>
 
