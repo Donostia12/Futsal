@@ -102,6 +102,7 @@
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
+    //add marker Denpasar 
     var polygon = L.polygon([
                     [-8.727992, 115.195773],
                     [-8.718151, 115.212939],

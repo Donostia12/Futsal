@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function index(){
+      
     return view('admin.login');
     }
     
@@ -17,6 +18,7 @@ class UserController extends Controller
         $password = $request->input('password');
         if (auth()->attempt(['email' => $email, 'password' => $password])) {
             return redirect()->intended('dashboard');
+         
         } else {
             return back()->with('error', 'Invalid login credentials');
         }

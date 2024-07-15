@@ -41,9 +41,7 @@ class LapanganController extends Controller
         foreach ($lapangan as $lap) {
             $image = image::where('id_lapangan', $lap->id)->first();
             if ($image == null) {
-                $data[] = [
-               
-             
+                $data[] = [             
                     'id' => $lap->id,
                     'name' => $lap->name,
                     'kecamatan'=> kecamatan::where('id', $lap->id_kecamatan)->first()->name,
@@ -73,9 +71,7 @@ class LapanganController extends Controller
     public function detail($id){
         $lapangan = lapangan::where('id', $id)->first();
         $kecamatan = kecamatan::all();
-        
         $profile = image::where('id_lapangan', $id)->first();
-
         $kec = kecamatan::where('id', $lapangan->id_kecamatan)->first();
         $image = image::where('id_lapangan', $id)->get();
         $jadwal = Operation::where('id_lapangan', $id)->first();
@@ -134,9 +130,7 @@ class LapanganController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
         $lapangan = Lapangan::findOrFail($id);
-        
         $lapangan->name = $request->input('name');
         $lapangan->id_kecamatan = $request->input('kecamatan');
         $lapangan->latitude = $request->input('latitude');
@@ -146,7 +140,6 @@ class LapanganController extends Controller
         $lapangan->alamat = $request->input('alamat');
         $lapangan->telp = $request->input('telp');
         $lapangan->jml_lapangan = $request->input('jml');
-        
         $lapangan->save();
         return redirect()->route('lapangan.index')->with('success', 'Lapangan berhasil diupdate');
     }

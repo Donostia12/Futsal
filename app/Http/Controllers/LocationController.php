@@ -20,6 +20,7 @@ class LocationController extends Controller
         $kecamatan1 = kecamatan::where('id', $id)->first();
         $kecamatan = kecamatan::all();
         $lapangan = lapangan::where('id_kecamatan', $id)->get();
+        
         $data[] = [];
         foreach ($lapangan as $lap) {
             $image = image::where('id_lapangan', $lap->id)->first();
@@ -43,7 +44,7 @@ class LocationController extends Controller
                 ];
             }
         }
-        return view('home.Listkecamatan', compact('data','kecamatan'));
+        return view('home.Listkecamatan', compact('data','kecamatan','id'));
     }
 
     
@@ -84,6 +85,27 @@ public function findlapangan(Request $request) {
     }
 
     $distances = collect($distances)->sortBy('distance')->values()->all();
+    return response()->json(array('data' => $distances), 200);
+}
+
+public function findkecamatan(Request $request) {
+    
+    $lapangan = lapangan::where('id_kecamatan', $request->input('id_kecamatan'))->get();
+    $lat_users = $request->input('latitude'); 
+    $lon_users = $request->input('longitude'); 
+    $distances = [];
+
+    foreach ($lapangan as $item) {
+        $lat_bengkel = $item->latitude; 
+        $lon_bengkel = $item->longitude;
+        $distance = $this->haversine($lat_bengkel, $lon_bengkel, $lat_users, $lon_users);
+
+        $distances[] = [
+        'name' => $item->name,
+        'distance' => $distance,
+        ];
+    }
+    $distances = collect($distances);
     return response()->json(array('data' => $distances), 200);
 }
 
