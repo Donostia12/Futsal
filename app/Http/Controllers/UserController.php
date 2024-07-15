@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kecamatan;
+use App\Models\lapangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -26,7 +28,14 @@ class UserController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $kecamatan = Kecamatan::all(); // Ambil semua kecamatan untuk dropdown atau penggunaan lain
+        $lapanganCountByKecamatan = Lapangan::select('id_kecamatan')
+            ->selectRaw('count(*) as lapangan_count')
+            ->groupBy('id_kecamatan')
+            ->get()
+            ->keyBy('id_kecamatan');
+    
+        return view('admin.dashboard', compact('kecamatan', 'lapanganCountByKecamatan'));
     }
 
     public function logout()

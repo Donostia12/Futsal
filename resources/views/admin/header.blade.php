@@ -140,7 +140,7 @@
 				<ul class="metismenu" id="menu">
                     <li><a href="javascript:void()" aria-expanded="false">
 							<i class="flaticon-025-dashboard"></i>
-							<span class="nav-text">Dashboard</span>
+							<span class="nav-text">Graphic</span>
 						</a>
                     </li>
 					<li><a  href="{{route('lapangan.index')}}" aria-expanded="false">
