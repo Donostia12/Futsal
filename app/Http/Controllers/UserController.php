@@ -29,13 +29,14 @@ class UserController extends Controller
     public function dashboard()
     {
         $kecamatan = Kecamatan::all(); // Ambil semua kecamatan untuk dropdown atau penggunaan lain
+        $lapangan = lapangan::all();
         $lapanganCountByKecamatan = Lapangan::select('id_kecamatan')
             ->selectRaw('count(*) as lapangan_count')
             ->groupBy('id_kecamatan')
             ->get()
             ->keyBy('id_kecamatan');
     
-        return view('admin.dashboard', compact('kecamatan', 'lapanganCountByKecamatan'));
+        return view('admin.dashboard', compact('kecamatan', 'lapanganCountByKecamatan','lapangan'));
     }
 
     public function logout()

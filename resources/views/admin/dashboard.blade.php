@@ -24,22 +24,17 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    // Hitung total jumlah lapangan
-    var totalLapangan = @json(array_reduce($lapanganCountByKecamatan, function($carry, $item) {
-        return $carry + ($item->lapangan_count ?? 0);
-    }, 0));
-
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: [
                 @foreach ($kecamatan as $item)
-                    '{{ $item->name }} ({{ $lapanganCountByKecamatan[$item->id]->lapangan_count ?? 0 }})',
+                    '{{ $item->name }} ({{ $lapanganCountByKecamatan[$item->id]->lapangan_count ?? 0}})',
                 @endforeach
             ],
             datasets: [{
-                label: 'Jumlah Mitra Lapangan (Total: ' + totalLapangan + ' Lapangan)', // Label dengan total lapangan
+                label: 'Jumlah Mitra Lapangan ('+ {{ $lapangan->count() }} + ')', // Label untuk dataset
                 data: [
                     @foreach ($kecamatan as $kec)
                         {{ $lapanganCountByKecamatan[$kec->id]->lapangan_count ?? 0 }},
@@ -73,7 +68,5 @@
         }
     });
 </script>
-
-
 
 @endsection

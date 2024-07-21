@@ -114,6 +114,7 @@ class LapanganController extends Controller
         $data = lapangan::where('id', $id)->first();
         $kecamatan = kecamatan::all();
         $kecamatanold = kecamatan::where('id', $data->id_kecamatan)->first();
+       
         return view('admin.lapangan-show',compact('data','kecamatan','kecamatanold'));
     }
 
