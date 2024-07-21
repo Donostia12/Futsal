@@ -210,33 +210,33 @@
                         </tr>
                         <tr>
                             <td>Tuesday</td>
-                            <td>{{$jadwal->senin_buka?? 'data tidak tersedia'}}</td>
-                            <td>{{$jadwal->senin_tutup?? 'data tidak tersedia'}}</td>
+                            <td>{{$jadwal->selsa_buka?? 'data tidak tersedia'}}</td>
+                            <td>{{$jadwal->selasa_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
                             <td>Wednesday</td>
-                            <td>{{$jadwal->senin_buka?? 'data tidak tersedia'}}</td>
-                            <td>{{$jadwal->senin_tutup?? 'data tidak tersedia'}}</td>
+                            <td>{{$jadwal->rabu_buka?? 'data tidak tersedia'}}</td>
+                            <td>{{$jadwal->rabu_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
                             <td>Thursday</td>
-                            <td>{{$jadwal->senin_buka?? 'data tidak tersedia'}}</td>
-                            <td>{{$jadwal->senin_tutup?? 'data tidak tersedia'}}</td>
+                            <td>{{$jadwal->kamis_buka?? 'data tidak tersedia'}}</td>
+                            <td>{{$jadwal->kamis_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
                             <td>Friday</td>
-                            <td>{{$jadwal->senin_buka?? 'data tidak tersedia'}}</td>
-                            <td>{{$jadwal->senin_tutup?? 'data tidak tersedia'}}</td>
+                            <td>{{$jadwal->jumat_buka?? 'data tidak tersedia'}}</td>
+                            <td>{{$jadwal->jumat_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
                             <td>Saturday</td>
-                            <td>{{$jadwal->senin_buka?? 'data tidak tersedia'}}</td>
-                            <td>{{$jadwal->senin_tutup?? 'data tidak tersedia'}}</td>
+                            <td>{{$jadwal->sabtu_buka?? 'data tidak tersedia'}}</td>
+                            <td>{{$jadwal->sabtu_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
                             <td>Sunday</td>
-                            <td>{{$jadwal->senin_buka?? 'data tidak tersedia'}}</td>
-                            <td>{{$jadwal->senin_tutup?? 'data tidak tersedia'}}</td>
+                            <td>{{$jadwal->minggu_buka?? 'data tidak tersedia'}}</td>
+                            <td>{{$jadwal->minggu_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -93,32 +93,76 @@
     </div>
 </section>
 
-<script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Map with Current Location Marker</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([-8.675050, 115.217402], 13);
 
-    const map = L.map('map').setView([-8.675050, 115.217402], 13);
+        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
 
-    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
+        // Add polygon for Denpasar
+        var polygon = L.polygon([
+            [-8.727992, 115.195773],
+            [-8.718151, 115.212939],
+            [-8.705425, 115.244868],
+            [-8.706443, 115.262205],
+            [-8.696737, 115.266075],
+            [-8.678240, 115.264530],
+            [-8.666022, 115.260582],
+            [-8.649934, 115.274393],
+            [-8.599018, 115.238001],
+            [-8.606995, 115.195944],
+            [-8.659947, 115.179636],
+            [-8.696058, 115.185910],
+        ]).addTo(map);
 
-    //add marker Denpasar 
-    var polygon = L.polygon([
-                    [-8.727992, 115.195773],
-                    [-8.718151, 115.212939],
-                    [-8.705425, 115.244868],
-                    [-8.706443, 115.262205],    
-                    [-8.696737, 115.266075],
-                    [-8.678240, 115.264530], 
-                    [-8.666022, 115.260582],
-                    [-8.649934, 115.274393],
-                    [-8.599018, 115.238001],
-                    [-8.606995, 115.195944],
-                    [-8.659947, 115.179636],
-                    [-8.696058, 115.185910],
-                ]).addTo(map);
-          
-</script>
+        // Custom red icon
+        const redIcon = L.icon({
+            iconUrl:" {{asset('images/maps.svg')}} ",
+            iconSize: [25, 41], // size of the icon
+            iconAnchor: [12, 41], // point of the icon which will correspond to marker's location
+            popupAnchor: [1, -34], // point from which the popup should open relative to the iconAnchor
+            shadowSize: [41, 41] // size of the shadow
+        });
+
+        // Use the Geolocation API to get the user's current location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const userLat = position.coords.latitude;
+                const userLng = position.coords.longitude;
+
+                // Add a marker at the user's current location with the custom red icon
+                const userMarker = L.marker([userLat, userLng], { icon: redIcon }).addTo(map)
+                    .bindPopup("You are here!")
+                    .openPopup();
+
+                // Center the map on the user's location
+                map.setView([userLat, userLng], 13);
+            }, function(error) {
+                console.error("Geolocation error: " + error.message);
+            });
+        } else {
+            console.error("Geolocation is not supported by this browser.");
+        }
+    </script>
+</body>
+</html>
+
 @foreach ($lapangan as $item)
     <script>
         var latitude = {{$item->latitude}};
