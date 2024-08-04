@@ -33,7 +33,7 @@
                                 <div class="rating-main d-flex align-items-center">
                                     <p class="mb-0 me-2"><i class="icon-location-pin"></i> {{$lapangan->alamat}}</p>
                                    
-                                    <span>(1,186 Reviews)</span>
+        
                                 </div>
                             </div>
                         </div>

@@ -7,9 +7,9 @@
                 
               
                     <div class="banner-content text-lg-start text-center">
-                        <h4 class="theme mb-0">Denah Lokasi Sebaran futsal</h4>
-                        <h1>Ayo Mari Futsal bersama Kita</h1>
-                        <p class="mb-4">Check Denah Sebaran Futsal</p>
+                        <h4 class="theme mb-0">Peta Sebaran Lapangan Futsal</h4>
+                        <h1>Bergabunglah dan Bermain Futsal Bersama Kami!</h1>
+                        <p class="mb-4">Lihat peta lokasi lapangan futsal di sekitar Anda.</p>
                     
                                 <div class="map rounded overflow-hidden">
                                     <div id="map" style="width: 100%; height: 800px;"></div>
@@ -31,7 +31,6 @@
             <p>Lihat List Tempat Futsal Berdasarkan kecamatanya</p>
             </p>
         </div>
-        <h1>RTX 3090</h1>
         <!-- why us starts -->
         <div class="why-us">
             <div class="why-us-box">
@@ -64,9 +63,9 @@
                 
             
                     <div class="banner-content text-lg-start text-center">
-                        <h4 class="theme mb-0">Cari Lokasi Futsal Anda </h4>
-                        <h1>Ayo Cari Lapangan yang cocok dengan lokasi anda!</h1>
-                        <p class="mb-4">Pastikan layanan lokasi di ijinkan pada browser</p>
+                        <h4 class="theme mb-0">Temukan Lapangan Futsal Terbaik di Sekitar Anda</h4>
+                        <h1>Mulai Petualangan Futsal Anda Sekarang!</h1>
+                        <p class="mb-4">Aktifkan layanan lokasi di browser Anda untuk pengalaman terbaik.</p>
                         <div class="book-form">
                             <div class="row d-flex align-items-center justify-content-between">
                                 <div class="col-lg-12">

@@ -23,13 +23,13 @@
                 <table id="example3" class="display" style="min-width: 845px">
                     <thead>
                         <tr>
-                            <th></th>
+                            {{-- <th>No</th> --}}
                             <th>Name</th>
                             <th>Telepon</th>
-                            <th>id_kecamatan</th>
+                            <th>kecamatan</th>
                             <th>Harga</th>
                             <th>Jumlah Lapangan</th>
-                            <th>Deskripsi</th>
+                            <th>Alamat</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -38,13 +38,13 @@
                         <tr>
                                 
                           
-                            <td><img class="rounded-circle" width="35" src="{{ asset('assets/image/profile.jpg') }}" alt=""></td>
+                            {{-- <td>{{ $item + 1 }}</td> --}}
                             <td>{{$item['name']}}</td>
                             <td>{{$item['telp']}}</td>
                             <td>{{$item['kecamatan']}}</td>
                             <td>{{$item['harga']}}</td>
-                            <td>{{$item['jumlah']}}</td>
-                            <td>{{$item['desc']}}</td>
+                            <td class="text-center align-middle">{{$item['jumlah']}}</td>
+                            <td>{{$item['alamat']}}</td>
                             <td>
                                 <div class="d-flex">
                                     <a href="{{ route('lapangan.show', $item['id']) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>

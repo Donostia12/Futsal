@@ -28,6 +28,7 @@ class LapanganController extends Controller
                 'jumlah'=> $lap->jml_lapangan,
                 'telp'=> $lap->telp,
                 'desc'=> $lap->desc,
+                'alamat'=> $lap->alamat,
             ];
         }
     return view('admin.lapangan', compact('data'));
