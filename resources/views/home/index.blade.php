@@ -104,7 +104,7 @@
     </style>
 </head>
 <body>
-    <div id="map"></div>
+    {{-- <div id="map"></div> --}}
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
         const map = L.map('map').setView([-8.675050, 115.217402], 13);

@@ -127,6 +127,8 @@ public function haversine($lat_bengkel, $lon_bengkel, $lat_users, $lon_users)
 
         $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
         $distance = round($R * $c,2);
+
+        
         return $distance;
     }
 }
