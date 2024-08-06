@@ -1,7 +1,5 @@
 @extends('home.header')
 @section('content')
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <section class="trending pb-0">
     <div class="container">
         <div class="row align-items-center justify-content-between mb-6 ">
@@ -18,10 +16,13 @@
                
             </div>
         </div>
-      
-        <div class="trend-box" id="box">
+       @php
+            $no =1
+       @endphp
+        <div class="trend-box">
             <div class="row item-slider">
-                @foreach ($data as $item)
+                @foreach ($distances as $item)
+              
                 @if(!empty($item)) <!-- Pastikan $item tidak kosong -->
                     <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
                         <div class="trend-item rounded box-shadow">
@@ -30,12 +31,12 @@
                                 <div class="color-overlay"></div>
                             </div>
                             <div class="trend-content p-4 pt-5 position-relative">
-                                {{-- <div class="trend-meta bg-theme white px-3 py-2 rounded">
+                                <div class="trend-meta bg-theme white px-3 py-2 rounded">
                                     <div class="entry-author">
                                         <i class="icon-calendar"></i>
-                                        <span class="fw-bold"> km</span>
+                                        <span class="fw-bold" id="{{$no}}">{{$item['distance']}} km</span>
                                     </div>
-                                </div> --}}
+                                </div>
                                 <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> {{ $item['kecamatan'] }}</h5>
                                 <h3 class="mb-1"><a href="{{ route('detail', ['id'=>$item['id']]) }}">{{ $item['name'] }}</a></h3>
                                 <div class="rating-main d-flex align-items-center pb-2">
@@ -57,17 +58,16 @@
                             </div>
                         </div>
                     </div>
+                   @php
+                       $no++
+                   @endphp
                 @endif
             @endforeach
             
             </div>
         </div>
-     
     </div>
 </section>
-
-
-<!-- Modal -->
 <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">

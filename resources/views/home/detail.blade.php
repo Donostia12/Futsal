@@ -23,7 +23,7 @@
 <section class="trending pt-6 pb-0 bg-lgrey">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-5">
                 <div class="single-content">
                     <div id="highlight" class="mb-4">
                         <div class="single-full-title border-b mb-2 pb-2">
@@ -156,7 +156,7 @@
                             </div>
                         </div>
                     </div>
-                  
+                
                     <!-- blog review -->
                     <div  id="single-add-review" class="single-add-review">
                         <h4>Write a Review</h4>
@@ -190,7 +190,90 @@
                 </div>
             </div>
             <!-- sidebar starts -->
-            <div class="col-lg-4">
+            <div class="col-lg-3">
+                <button id="haversine-btn" class="nir-btn">Haversine</button>
+            </div>
+            <!-- Modal HTML -->
+            <div class="modal fade" id="haversineModal" tabindex="-1" role="dialog" aria-labelledby="haversineModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="haversineModalLabel">Hasil Perhitungan Haversine</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="haversineResults">
+                            <!-- Hasil perhitungan akan ditampilkan di sini -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+            <script>
+           $(document).ready(function() {
+    $('#haversine-btn').on('click', function() {
+        // Lokasi tujuan
+        const destinationLat = {{$lapangan->latitude}};
+        const destinationLng = {{$lapangan->longitude}};
+        
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const currentLat = position.coords.latitude;
+                const currentLng = position.coords.longitude;
+
+                // Kirim data ke server menggunakan AJAX
+                $.ajax({
+                    url: 'http://localhost:8000/api/haversine',
+                    type: 'POST',
+                    data: JSON.stringify({
+                        currentLat: currentLat,
+                        currentLng: currentLng,
+                        destinationLat: destinationLat,
+                        destinationLng: destinationLng
+                    }),
+                    contentType: 'application/json',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        // Format dan tampilkan hasil dalam modal
+                        const resultHtml = `
+                            <p><strong>Delta Latitude:</strong> ${response.formula1}</p>
+                            <p><strong>Delta Longitude:</strong> ${response.formula2}</p>
+                            <p><strong>Formula a:</strong> ${response.formula3}</p>
+                            <p><strong>Formula c:</strong> ${response.formula4}</p>
+                            <p><strong>Distance:</strong> ${response.distance} km</p>
+                        `;
+                        $('#haversineResults').html(resultHtml);
+                        $('#haversineModal').modal('show');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX Error:', error);
+                    }
+                });
+
+            }, function(error) {
+                console.error('Error getting location:', error);
+            });
+        } else {
+            console.error('Geolocation is not supported by this browser.');
+        }
+    });
+});
+</script>
+            </script>
+            
+            
+            <div class="col-lg-4">  
                 <br>
                 <br>
                 <h1>jadwal Operasional</h1>

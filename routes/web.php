@@ -18,6 +18,7 @@ Route::get('/location', [LocationController::class, 'index'])->name('location');
 route::get('/', [IndexController::class, 'index'])->name('home'); 
 route::get('/login',[UserController::class, 'index']);
 route::post('/login',[UserController::class, 'login'])->name('login');
+route::get('/lokasi',[LocationController::class, 'findlokasi'])->name('lokasi');
 route::get('/logout',[UserController::class, 'logout'])->name('logout');
 Route::get('/kecamatan/{id}', [LocationController::class, 'kecamatan']);
 Route::get('/detail/{id}',[LapanganController::class, 'detail'])->name('detail');
