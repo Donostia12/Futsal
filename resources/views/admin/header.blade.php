@@ -106,11 +106,8 @@
                             </div>
 						
                         </div>
-                        <div class="header-right">
-                     
-                                <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#basicModal">Log-Out</button>
-                                    
-                          
+                        <div class="header-right d-flex align-items-center">
+                            <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#basicModal">Log-Out</button>   
                         </div>
                         
 				</nav>
