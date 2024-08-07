@@ -90,38 +90,30 @@
                     
                     lapanganHtml += `
                         <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
-                            <div class="trend-item rounded box-shadow">
-                                <div class="trend-image position-relative">
-                                    ${lapangan.image ? `<img src="/images/${lapangan.image}" alt="image" class="">` : ''}
-                                    <div class="color-overlay"></div>
-                                </div>
-                                <div class="trend-content p-4 pt-5 position-relative">
-                                    <div class="trend-meta bg-theme white px-3 py-2 rounded">
-                                        <div class="entry-author">
-                                            <i class="icon-location-pin"></i> 
-                                            <span class="fw-bold">${lapangan.distance} km</span>
-                                        </div>
+                            <a href="/detail/${lapangan.id}">
+                                <div class="trend-item rounded box-shadow">
+                                    <div class="trend-image position-relative">
+                                        ${lapangan.image ? `<img src="/images/${lapangan.image}" alt="image" class="">` : ''}
+                                        <div class="color-overlay"></div>
                                     </div>
-                                    <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> ${lapangan.kecamatan}</h5>
-                                    <h3 class="mb-1"><a href="/detail/${lapangan.id}">${lapangan.name}</a></h3>
-                                    <div class="rating-main d-flex align-items-center pb-2">
-                                        <div class="rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
+                                    <div class="trend-content p-4 pt-5 position-relative">
+                                        <div class="trend-meta bg-theme white px-3 py-2 rounded">
+                                            <div class="entry-author">
+                                                <i class="icon-location-pin"></i> 
+                                                <span class="fw-bold">${lapangan.distance} km</span>
+                                            </div>
                                         </div>
-                                        <span class="ms-2">(12)</span>
-                                    </div>
-                                    <p class="border-b pb-2 mb-2">${lapangan.desc}</p>
-                                    <div class="entry-meta">
-                                        <div class="entry-author d-flex align-items-center">
-                                            <p class="mb-0"><span class="theme fw-bold fs-5">${lapangan.harga}</span> | Per Hour</p>
+                                        <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> ${lapangan.kecamatan}</h5>
+                                        <h3 class="mb-1"><a href="/detail/${lapangan.id}">${lapangan.name}</a></h3>         
+                                        <p class="border-b pb-2 mb-2">${lapangan.desc}</p>
+                                        <div class="entry-meta">
+                                            <div class="entry-author d-flex align-items-center">
+                                                <p class="mb-0"><span class="theme fw-bold fs-5">${lapangan.harga}</span> | Per Hour</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     `;
                     $('#lapangan-container').append(lapanganHtml);

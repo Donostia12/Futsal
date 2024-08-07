@@ -47,7 +47,7 @@
                     <div class="navbar-flex d-flex align-items-center justify-content-between w-100 pb-3 pt-3">
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="index.html">
+                            <a class="navbar-brand" href="{{route('home')}}">
                                 <img src="{{ asset('assets/travelin/images/logo.png') }}" alt="image">
                             </a>
                         </div>
@@ -55,8 +55,7 @@
                         <div class="navbar-collapse1 d-flex align-items-center" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav" id="responsive-menu">
                                 <li class="dropdown submenu active">
-                                    <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
-                                   
+                                    <a href="{{route('home')}}"  role="button" aria-haspopup="true" aria-expanded="false" >Home</a>
                                 </li>
 
                                 <li class="submenu dropdown">

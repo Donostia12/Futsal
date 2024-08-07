@@ -23,7 +23,7 @@
 <section class="trending pt-6 pb-0 bg-lgrey">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5">
+            <div class="col-lg-8">
                 <div class="single-content">
                     <div id="highlight" class="mb-4">
                         <div class="single-full-title border-b mb-2 pb-2">
@@ -32,28 +32,25 @@
                                 <h3 class="mb-1">Rp. <span>{{$lapangan->harga}} </span> /Hours</h3>
                                 <div class="rating-main d-flex align-items-center">
                                     <p class="mb-0 me-2"><i class="icon-location-pin"></i> {{$lapangan->alamat}}</p>
-                                   
-        
                                 </div>
                             </div>
                         </div>
                             
-                    @if ($profile == null)
-                           
-                    <div class="description-images mb-4">
-                        <img src="{{asset('images/Default.jpg')}}" alt="" class="w-50 rounded">
-                    </div>
-                    @else
-                           
-                    <div class="description-images mb-4">
-                        <img src="{{asset('images/'.$profile['image'])}}" alt="" class="w-50 rounded">
-                    </div>
-                    @endif
-
+                        @if ($profile == null)
+                            
+                        <div class="description-images mb-4">
+                            <img src="{{asset('images/Default.jpg')}}" alt="" class="w-50 rounded">
+                        </div>
+                        @else
+                            
+                        <div class="description-images mb-4">
+                            <img src="{{asset('images/'.$profile['image'])}}" alt="" class="w-50 rounded">
+                        </div>
+                        @endif
+                      
                         <div class="description mb-2">
                             <h4>Description</h4>
                             <p>{{$lapangan->desc}}</p>
-                        
                         </div>
 
                         <div class="description d-md-flex">
@@ -61,7 +58,6 @@
                                 <h5 class="mb-2">Jumlah Lapangan</h5>
                                 <p style="text-align: center">{{$lapangan->jml_lapangan}}</p>
                             </div>
-                            
                         </div>
                     </div>
 
@@ -75,7 +71,6 @@
                           
                         </div>              
                     </div>
-
                     <div  id="single-map" class="single-map mb-4">
                         <h4>Map</h4>
                         <div class="map rounded overflow-hidden">
@@ -100,7 +95,7 @@
                     </div>
                     @endforeach
                     
-                    <div  id="single-review" class="single-review mb-4">
+                    {{-- <div  id="single-review" class="single-review mb-4">
                         <h4>Average Reviews</h4>
                         <div class="row d-flex align-items-center">
                             <div class="col-lg-4 col-md-4">
@@ -155,8 +150,14 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                
+                    </div> --}}
+
+                    {{-- button modal haversine --}}
+                    {{-- <div>
+                        <button id="haversine-btn" class="nir-btn">Haversine</button>
+                    </div> --}}
+                    {{-- button modal haversine --}}
+                    
                     <!-- blog review -->
                     <div  id="single-add-review" class="single-add-review">
                         <h4>Write a Review</h4>
@@ -190,9 +191,10 @@
                 </div>
             </div>
             <!-- sidebar starts -->
-            <div class="col-lg-3">
-                <button id="haversine-btn" class="nir-btn">Haversine</button>
-            </div>
+
+            {{-- button modal --}}
+           
+
             <!-- Modal HTML -->
             <div class="modal fade" id="haversineModal" tabindex="-1" role="dialog" aria-labelledby="haversineModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
@@ -219,59 +221,58 @@
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
             <script>
-           $(document).ready(function() {
-    $('#haversine-btn').on('click', function() {
-        // Lokasi tujuan
-        const destinationLat = {{$lapangan->latitude}};
-        const destinationLng = {{$lapangan->longitude}};
-        
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                const currentLat = position.coords.latitude;
-                const currentLng = position.coords.longitude;
+                    $(document).ready(function() {
+                $('#haversine-btn').on('click', function() {
+                    // Lokasi tujuan
+                    const destinationLat = {{$lapangan->latitude}};
+                    const destinationLng = {{$lapangan->longitude}};
+                    
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            const currentLat = position.coords.latitude;
+                            const currentLng = position.coords.longitude;
 
-                // Kirim data ke server menggunakan AJAX
-                $.ajax({
-                    url: 'http://localhost:8000/api/haversine',
-                    type: 'POST',
-                    data: JSON.stringify({
-                        currentLat: currentLat,
-                        currentLng: currentLng,
-                        destinationLat: destinationLat,
-                        destinationLng: destinationLng
-                    }),
-                    contentType: 'application/json',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-                        // Format dan tampilkan hasil dalam modal
-                        const resultHtml = `
-                            <p><strong>Delta Latitude:</strong> ${response.formula1}</p>
-                            <p><strong>Delta Longitude:</strong> ${response.formula2}</p>
-                            <p><strong>Formula a:</strong> ${response.formula3}</p>
-                            <p><strong>Formula c:</strong> ${response.formula4}</p>
-                            <p><strong>Distance:</strong> ${response.distance} km</p>
-                        `;
-                        $('#haversineResults').html(resultHtml);
-                        $('#haversineModal').modal('show');
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('AJAX Error:', error);
-                    }
+                            // Kirim data ke server menggunakan AJAX
+                            $.ajax({
+                                    url: 'http://localhost:8000/api/haversine',
+                                    type: 'POST',
+                                    data: JSON.stringify({
+                                        currentLat: currentLat,
+                                        currentLng: currentLng,
+                                        destinationLat: destinationLat,
+                                        destinationLng: destinationLng
+                                    }),
+                                    contentType: 'application/json',
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function(response) {
+                                        // Format dan tampilkan hasil dalam modal
+                                        const resultHtml = `
+                                            <p><strong>Delta Latitude:</strong> ${response.formula1}</p>
+                                            <p><strong>Delta Longitude:</strong> ${response.formula2}</p>
+                                            <p><strong>Formula a:</strong> ${response.formula3}</p>
+                                            <p><strong>Formula c:</strong> ${response.formula4}</p>
+                                            <p><strong>Distance:</strong> ${response.distance} km</p>
+                                        `;
+                                        $('#haversineResults').html(resultHtml);
+                                        $('#haversineModal').modal('show');
+                                    },
+                                    error: function(xhr, status, error) {
+                                        console.error('AJAX Error:', error);
+                                    }
+                                });
+
+                            }, function(error) {
+                                console.error('Error getting location:', error);
+                            });
+                        } else {
+                            console.error('Geolocation is not supported by this browser.');
+                        }
+                    });
                 });
-
-            }, function(error) {
-                console.error('Error getting location:', error);
-            });
-        } else {
-            console.error('Geolocation is not supported by this browser.');
-        }
-    });
-});
-</script>
             </script>
-            
+            {{-- </script> --}}
             
             <div class="col-lg-4">  
                 <br>
