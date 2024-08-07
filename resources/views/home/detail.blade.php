@@ -1,4 +1,58 @@
 @extends('home.header')
+<style>.popup {
+    display: none; /* Sembunyikan pop-up secara default */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Latar belakang semi-transparan */
+    z-index: 1000; /* Pastikan pop-up di atas konten lain */
+}
+
+.popup-content {
+    background-color: white;
+    margin: 15% auto; /* Center the popup */
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.popup-body {
+    margin-top: 10px;
+}
+
+.popup-footer {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}</style>
 @section('content')
 <section class="breadcrumb-main pb-20 pt-14" style="background-image: url(images/bg/bg1.jpg);">
     <div class="section-shape section-shape1 top-inherit bottom-0" style="background-image: url(images/shape8.png);"></div>
@@ -154,10 +208,10 @@
 
                     {{-- button modal haversine --}}
                     {{-- <div>
-                        <button id="haversine-btn" class="nir-btn">Haversine</button>
+                       
                     </div> --}}
                     {{-- button modal haversine --}}
-                    
+                    <button id="haversine-btn" class="nir-btn">Haversine</button>
                     <!-- blog review -->
                     <div  id="single-add-review" class="single-add-review">
                         <h4>Write a Review</h4>
@@ -194,46 +248,45 @@
 
             {{-- button modal --}}
            
-
-            <!-- Modal HTML -->
-            <div class="modal fade" id="haversineModal" tabindex="-1" role="dialog" aria-labelledby="haversineModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="haversineModalLabel">Hasil Perhitungan Haversine</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body" id="haversineResults">
-                            <!-- Hasil perhitungan akan ditampilkan di sini -->
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+            <!-- Modal HTML -->
+            <div id="customPopup" class="popup">
+                <div class="popup-content">
+                    <div class="popup-header">
+                        <h5 id="popupTitle">Hasil Perhitungan Haversine</h5>
+                        <button type="button" class="close-btn" onclick="closePopup()">&times;</button>
+                    </div>
+                    <div class="popup-body" id="popupResults">
+                        <!-- Hasil perhitungan akan ditampilkan di sini -->
+                    </div>
+                    <div class="popup-footer">
+                        <button type="button" class="btn btn-secondary" onclick="closePopup()">Tutup</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CSS untuk Pop-Up -->
+           
+            
+            <!-- JavaScript untuk Pop-Up Manual -->
             <script>
-                    $(document).ready(function() {
-                $('#haversine-btn').on('click', function() {
-                    // Lokasi tujuan
-                    const destinationLat = {{$lapangan->latitude}};
-                    const destinationLng = {{$lapangan->longitude}};
-                    
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function(position) {
-                            const currentLat = position.coords.latitude;
-                            const currentLng = position.coords.longitude;
-
-                            // Kirim data ke server menggunakan AJAX
-                            $.ajax({
+                $(document).ready(function() {
+                    console.log('Jquary kontol');
+            
+                    $('#haversine-btn').on('click', function() {
+                        // Lokasi tujuan
+                        const destinationLat = {{$lapangan->latitude}};
+                        const destinationLng = {{$lapangan->longitude}};
+                        
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(function(position) {
+                                const currentLat = position.coords.latitude;
+                                const currentLng = position.coords.longitude;
+            
+                                // Kirim data ke server menggunakan AJAX
+                                $.ajax({
                                     url: 'http://localhost:8000/api/haversine',
                                     type: 'POST',
                                     data: JSON.stringify({
@@ -247,22 +300,23 @@
                                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                     },
                                     success: function(response) {
-                                        // Format dan tampilkan hasil dalam modal
+                                        // Format dan tampilkan hasil dalam pop-up
                                         const resultHtml = `
                                             <p><strong>Delta Latitude:</strong> ${response.formula1}</p>
                                             <p><strong>Delta Longitude:</strong> ${response.formula2}</p>
                                             <p><strong>Formula a:</strong> ${response.formula3}</p>
                                             <p><strong>Formula c:</strong> ${response.formula4}</p>
+                                            <p><strong>Formula distance:</strong> ${response.formula5}</p>
                                             <p><strong>Distance:</strong> ${response.distance} km</p>
                                         `;
-                                        $('#haversineResults').html(resultHtml);
-                                        $('#haversineModal').modal('show');
+                                        $('#popupResults').html(resultHtml);
+                                        $('#customPopup').fadeIn(); // Tampilkan pop-up
                                     },
                                     error: function(xhr, status, error) {
                                         console.error('AJAX Error:', error);
                                     }
                                 });
-
+            
                             }, function(error) {
                                 console.error('Error getting location:', error);
                             });
@@ -271,9 +325,17 @@
                         }
                     });
                 });
+            
+                // Fungsi untuk menutup pop-up
+                function closePopup() {
+                    console.log('modal nutup lah bangsat');
+                    $('#customPopup').fadeOut(); // Sembunyikan pop-up
+                }
             </script>
+            
             {{-- </script> --}}
             
+        
             <div class="col-lg-4">  
                 <br>
                 <br>
