@@ -48,7 +48,7 @@
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">
                             <a class="navbar-brand" href="{{route('home')}}">
-                                <img src="{{ asset('assets/travelin/images/logo.png') }}" alt="image">
+                                <img src="{{ asset('assets/image/futsal.png') }}" alt="image">
                             </a>
                         </div>
                         <!-- Collect the nav links, forms, and other content for toggling -->
