@@ -306,6 +306,7 @@
                                             <p><strong>Delta Longitude:</strong> ${response.formula2}</p>
                                             <p><strong>Formula a:</strong> ${response.formula3}</p>
                                             <p><strong>Formula c:</strong> ${response.formula4}</p>
+                                            <p><strong>Formula distance:</strong> ${response.formula5}</p>
                                             <p><strong>Distance:</strong> ${response.distance} km</p>
                                         `;
                                         $('#popupResults').html(resultHtml);
