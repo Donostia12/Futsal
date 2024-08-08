@@ -31,15 +31,18 @@
                 <table id="example3" class="display" style="min-width: 845px">
                     <thead>
                         <tr>
-                         
+                            <th>No</th>
                             <th>Name</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $no =1;
+                        @endphp
                         @foreach ($kecamatan as $item)
                         <tr>
-                           
+                            <td>{{ $no++ }}</td>
                             <td>{{$item->name}}</td>
                             <td>
                                 <div class="d-flex">

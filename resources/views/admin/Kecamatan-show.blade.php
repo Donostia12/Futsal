@@ -1,9 +1,11 @@
+
+
 @extends('admin.header')
 @section('content')
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Edit Kecamatan</h4>
+            <h4 class="card-title">Tambah Kecamatan</h4>
         </div>
         <div class="card-body">
             <div class="basic-form">

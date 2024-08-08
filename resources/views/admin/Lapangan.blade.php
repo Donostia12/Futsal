@@ -23,7 +23,7 @@
                 <table id="example3" class="display" style="min-width: 845px">
                     <thead>
                         <tr>
-                            {{-- <th>No</th> --}}
+                            <th>No</th>
                             <th>Name</th>
                             <th>Telepon</th>
                             <th>kecamatan</th>
@@ -34,11 +34,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $no =1;
+                        @endphp
                         @foreach ($data as $item)
                         <tr>
-                                
-                          
-                            {{-- <td>{{ $item + 1 }}</td> --}}
+                            <td>{{ $no++ }}</td>
                             <td>{{$item['name']}}</td>
                             <td>{{$item['telp']}}</td>
                             <td>{{$item['kecamatan']}}</td>
