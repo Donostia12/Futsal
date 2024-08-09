@@ -138,7 +138,7 @@
 						</a>
                     </li>
                   <li>
-                    <a href="javascript:void()" aria-expanded="false">
+                    <a href="{{route('review.index')}}" aria-expanded="false">
                         <i class="flaticon-086-star"></i>
                         <span class="nav-text">Review</span>
                     </a>

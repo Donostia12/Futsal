@@ -23,6 +23,7 @@ route::get('/logout',[UserController::class, 'logout'])->name('logout');
 Route::get('/kecamatan/{id}', [LocationController::class, 'kecamatan']);
 Route::get('/detail/{id}',[LapanganController::class, 'detail'])->name('detail');
 route::get('/list', [LapanganController::class, 'list'])->name('list');
+Route::get('/detail-search/{latitude}/{longitude}/{id}', [LapanganController::class, 'detailsearch'])->name('detail-search');
 Route::fallback(function () {
     return redirect()->route('home')->with('error', 'Invalid request method or route');
 });

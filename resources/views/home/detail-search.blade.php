@@ -282,8 +282,8 @@
                                     url: 'http://localhost:8000/api/haversine',
                                     type: 'POST',
                                     data: JSON.stringify({
-                                        currentLat: currentLat,
-                                        currentLng: currentLng,
+                                        currentLat: {{$latitude}},
+                                        currentLng: {{$longitude}},
                                         destinationLat: destinationLat,
                                         destinationLng: destinationLng
                                     }),
@@ -294,7 +294,7 @@
                                     success: function(response) {
                                         // Format dan tampilkan hasil dalam pop-up
                                         const resultHtml = `
-                                        <p><strong>Delta Latitude:</strong> ${response.formula0}</p>
+                                             <p><strong>Delta Latitude:</strong> ${response.formula0}</p>
                                         <p><strong>Delta Latitude:</strong> ${response.formula01}</p>
                                             <p><strong>Delta Latitude:</strong> ${response.formula1}</p>
                                             <p><strong>Delta Longitude:</strong> ${response.formula2}</p>

@@ -24,7 +24,7 @@
                 @foreach ($distances as $item)
                 @if(!empty($item)) <!-- Pastikan $item tidak kosong -->
                     <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
-                        <a href="{{ route('detail', ['id' => $item['id']]) }}" style="text-decoration: none; color: inherit; display: block;">
+                        <a href="{{ route('detail-search', ['latitude' => $lat, 'longitude' => $lng, 'id' => $item['id']]) }}" style="text-decoration: none; color: inherit; display: block;">
                             <div class="trend-item rounded box-shadow">
                                 <div class="trend-image position-relative">
                                     <img src="{{ asset('images/' . $item['image']) }}" alt="image">
@@ -38,7 +38,12 @@
                                         </div>
                                     </div>
                                     <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> {{ $item['kecamatan'] }}</h5>
-                                    <h3 class="mb-1"><a href="{{ route('detail', ['id'=>$item['id']]) }}">{{ $item['name'] }}</a></h3>
+                                    <h3 class="mb-1">
+                                        <a href="{{ route('detail-search', ['latitude' => $lat, 'longitude' => $lng, 'id' => $item['id']]) }}">
+                                            {{ $item['name'] }}
+                                        </a>
+                                    </h3>
+                                    
                                     {{-- <div class="rating-main d-flex align-items-center pb-2">
                                         <div class="rating">
                                             <span class="fa fa-star checked"></span>

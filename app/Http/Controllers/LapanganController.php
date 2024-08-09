@@ -79,6 +79,17 @@ class LapanganController extends Controller
         $review = review::where('id_lapangan', $id)->get();
         return view('home.detail',compact('lapangan','kecamatan','image','kec','profile','jadwal','id' ,'review'));
     }
+    public function detailsearch($latitude,$longitude,$id){
+       
+        $lapangan = lapangan::where('id', $id)->first();
+        $kecamatan = kecamatan::all();
+        $profile = image::where('id_lapangan', $id)->first();
+        $kec = kecamatan::where('id', $lapangan->id_kecamatan)->first();
+        $image = image::where('id_lapangan', $id)->get();
+        $jadwal = Operation::where('id_lapangan', $id)->first();
+        $review = review::where('id_lapangan', $id)->get();
+        return view('home.detail-search',compact('lapangan','kecamatan','image','kec','profile','jadwal','id' ,'review','latitude','longitude'));
+    }
     /**
      * Show the form for creating a new resource.
      */
