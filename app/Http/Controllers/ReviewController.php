@@ -12,7 +12,8 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        $review = review::all();
+        return view('admin.Review',compact('review'));
     }
 
     /**
@@ -20,7 +21,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -67,6 +68,8 @@ class ReviewController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = review::find($id);
+        $data->delete();
+        return redirect()->Route('review.index')->with('success', 'Review success di hapus');
     }
 }

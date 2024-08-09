@@ -155,7 +155,7 @@ public function findlokasi(Request $request) {
     $distances = collect($distances)->sortBy('distance')->values()->all();
     // $distancesfar = collect($distances)->sortByDesc('distance')->values()->all();
     // Kirim data ke view
-    return view('home.listlokasi', compact('distances', 'kecamatan'));
+    return view('home.listlokasi', compact('distances', 'kecamatan', 'lat', 'lng'));
     // $distance = $this->haversine(-8.644123, 116.21123122, $lat, $lng);
     // return $distance;
 }
