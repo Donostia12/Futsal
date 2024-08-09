@@ -68,34 +68,55 @@
 </div>    
 
 <script>
+    const map = L.map('map').setView([-8.675050, 115.217402], 13);
 
-	const map = L.map('map').setView([-8.675050, 115.217402],13);
+    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
 
-	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		maxZoom: 19,
-		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-	}).addTo(map);
-	
+    var currentMarker = null;
+
     function onMapClick(e) {
-            document.getElementById('lat').value = e.latlng.lat;
-            document.getElementById('long').value = e.latlng.lng;
+        document.getElementById('lat').value = e.latlng.lat;
+        document.getElementById('long').value = e.latlng.lng;
+        if (currentMarker) {
+            map.removeLayer(currentMarker);
         }
-        map.on('click', onMapClick);
-        var polygon = L.polygon([
-                    [-8.727992, 115.195773],
-                    [-8.718151, 115.212939],
-                    [-8.705425, 115.244868],
-                    [-8.706443, 115.262205],    
-                    [-8.696737, 115.266075],
-                    [-8.678240, 115.264530], 
-                    [-8.666022, 115.260582],
-                    [-8.649934, 115.274393],
-                    [-8.599018, 115.238001],
-                    [-8.606995, 115.195944],
-                    [-8.659947, 115.179636],
-                    [-8.696058, 115.185910],
-                ]).addTo(map);
+        currentMarker = L.marker(e.latlng).addTo(map);
+    }
+    map.on('click', onMapClick);
 
+    var polygon = L.polygon([
+        [-8.727992, 115.195773],
+        [-8.718151, 115.212939],
+        [-8.705425, 115.244868],
+        [-8.706443, 115.262205],
+        [-8.696737, 115.266075],
+        [-8.678240, 115.264530],
+        [-8.666022, 115.260582],
+        [-8.649934, 115.274393],
+        [-8.599018, 115.238001],
+        [-8.606995, 115.195944],
+        [-8.659947, 115.179636],
+        [-8.696058, 115.185910]
+    ]).addTo(map);
+
+    // Add the Geocoder control to the map
+    const geocoder = L.Control.geocoder({
+        defaultMarkGeocode: false
+    })
+    .on('markgeocode', function(e) {
+        const latlng = e.geocode.center;
+        document.getElementById('lat').value = latlng.lat;
+        document.getElementById('long').value = latlng.lng;
+        if (currentMarker) {
+            map.removeLayer(currentMarker);
+        }
+        currentMarker = L.marker(latlng).addTo(map);
+        map.setView(latlng, map.getZoom());
+    })
+    .addTo(map);
 </script>
 
 @endsection

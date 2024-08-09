@@ -39,7 +39,7 @@
                                     </div>
                                     <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> {{ $item['kecamatan'] }}</h5>
                                     <h3 class="mb-1"><a href="{{ route('detail', ['id'=>$item['id']]) }}">{{ $item['name'] }}</a></h3>
-                                    <div class="rating-main d-flex align-items-center pb-2">
+                                    {{-- <div class="rating-main d-flex align-items-center pb-2">
                                         <div class="rating">
                                             <span class="fa fa-star checked"></span>
                                             <span class="fa fa-star checked"></span>
@@ -48,11 +48,11 @@
                                             <span class="fa fa-star checked"></span>
                                         </div>
                                         <span class="ms-2">(12)</span>
-                                    </div>
+                                    </div> --}}
                                     <p class="border-b pb-2 mb-2">{{ $item['desc'] }}</p>
                                     <div class="entry-meta">
                                         <div class="entry-author d-flex align-items-center">
-                                            <p class="mb-0"><span class="theme fw-bold fs-5">{{ $item['harga'] }}</span> | Per person</p>
+                                            <p class="mb-0"><span class="theme fw-bold fs-5">{{ $item['harga'] }}</span> | Hour</p>
                                         </div>
                                     </div>
                                 </div>

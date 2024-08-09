@@ -1,4 +1,5 @@
 @extends('home.header')
+
 <style>.popup {
     display: none; /* Sembunyikan pop-up secara default */
     position: fixed;
@@ -48,6 +49,12 @@
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.comment-2 {
+    background: #f1f1f1;
+    padding: 20px;
+    border-radius: 20px;
 }
 
 .btn-secondary:hover {
@@ -112,6 +119,10 @@
                                 <h5 class="mb-2">Jumlah Lapangan</h5>
                                 <p style="text-align: center">{{$lapangan->jml_lapangan}}</p>
                             </div>
+                            <div class="desc-box bg-grey p-4 rounded me-md-2 mb-2">
+                                <h5 class="mb-2">No Telp</h5>
+                                <p style="text-align: center">{{$lapangan->telp}}</p>
+                            </div>
                         </div>
                     </div>
 
@@ -127,10 +138,11 @@
                     </div>
                     <div  id="single-map" class="single-map mb-4">
                         <h4>Map</h4>
+                        
                         <div class="map rounded overflow-hidden">
                             <div style="width: 100%">
                                 <div id="map" style="width: 100%; height: 800px;"></div>
-                       
+                                <br>
                             <div class="col-md-12">
                                 <div class="form-btn">
                                     <a class="nir-btn" style="text-align: center" href="https://www.google.com/maps/search/?api=1&query={{$lapangan->latitude}},{{$lapangan->longitude}}">Ayo pergi sekarang</a>
@@ -141,84 +153,59 @@
                         </div>
                     </div>
                     
-                    @foreach ($review as $item)
-                        
-                    <div  id="single-review" class="single-review mb-4">
-                        <h3>{{$item->name}}</h3>
-                        <h4>{{$item->desc}}</h4>
-                    </div>
-                    @endforeach
-                    
-                    {{-- <div  id="single-review" class="single-review mb-4">
-                        <h4>Average Reviews</h4>
-                        <div class="row d-flex align-items-center">
-                            <div class="col-lg-4 col-md-4">
-                                <div class="review-box bg-title text-center py-4 p-2 rounded">
-                                    <h2 class="mb-1 white"><span>2.2</span>/5</h2>
-                                    <h4 class="white mb-1">"Feel so much worst than thinking"</h4>
-                                    <p class="mb-0 white font-italic">From 40 Reviews</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-8 col-md-8">
-                                <div class="review-progress">
-                                    <div class="progress-item mb-1">
-                                        <p class="mb-0">Cleanliness</p>
-                                        <div class="progress rounded">
-                                            <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-                                                <span class="sr-only">40% Complete</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-item mb-1">
-                                        <p class="mb-0">Facilities</p>
-                                        <div class="progress rounded">
-                                            <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:30%">
-                                                <span class="sr-only">30% Complete</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-item mb-1">
-                                        <p class="mb-0">Value for money</p>
-                                        <div class="progress rounded">
-                                            <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60%">
-                                                <span class="sr-only">60% Complete</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-item mb-1">
-                                        <p class="mb-0">Service</p>
-                                        <div class="progress rounded">
-                                            <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:20%">
-                                                <span class="sr-only">20% Complete</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-item">
-                                        <p class="mb-0">Location</p>
-                                        <div class="progress rounded">
-                                            <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:45%">
-                                                <span class="sr-only">45% Complete</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
+                    {{-- review --}}
+                    <div style="max-height: 300px;overflow-y: scroll;">
 
-                    {{-- button modal haversine --}}
-                    {{-- <div>
-                       
-                    </div> --}}
-                    {{-- button modal haversine --}}
+                        @foreach ($review as $item)
+                            <div class="comment-2 mb-3">
+                                <div class="comment-content rounded">
+                                    <h5 class="mb-1">{{$item->name}}</h5>
+                                    <div class="comment-rate">
+                                        <div class="rating mar-right-15">
+                                            @for ($i=1; $i<=$item->rate; $i++)
+                                                <span class="fa fa-star checked"></span>
+                                            @endfor
+                                        </div>
+                                        <p class="comment">{{$item->desc}}</p>
+                                    </div> 
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    {{-- review --}}
+                    
                     <button id="haversine-btn" class="nir-btn">Haversine</button>
                     <!-- blog review -->
                     <div  id="single-add-review" class="single-add-review">
+                        <br>
                         <h4>Write a Review</h4>
                         <form action="{{route('review.store')}}" method="POST">
                             @csrf
                             <div class="row">
                                 <input type="text" name="id_lap" value="{{$id}}" hidden>
+                                <div class="col-12">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="rate" id="rate" value="1">
+                                        <label class="form-check-label" for="rate">1 
+                                            <span class="fa fa-star checked" style="color: #F9E400"></span></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="rate" id="rate" value="2">
+                                        <label class="form-check-label" for="rate">2 <span class="fa fa-star checked" style="color: #F9E400"></span></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="rate" id="rate" value="3">
+                                        <label class="form-check-label" for="rate">3 <span class="fa fa-star checked" style="color: #F9E400"></span></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="rate" id="rate" value="4">
+                                        <label class="form-check-label" for="rate">4 <span class="fa fa-star checked" style="color: #F9E400"></span></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="rate" id="rate" value="5">
+                                        <label class="form-check-label" for="rate">5 <span class="fa fa-star checked" style="color: #F9E400"></span></label>
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group mb-2">
                                         <input type="text" name="name" class="form-control" placeholder="Name" required>
@@ -235,13 +222,14 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-btn">
+                                    <div class="form-btn mb-3">
                                         <button type="submit" class="nir-btn">Submit Review</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
                     </div>
+                    {{-- Blog review --}}
                 </div>
             </div>
             <!-- sidebar starts -->
@@ -251,6 +239,10 @@
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
             <!-- Modal HTML -->
             <div id="customPopup" class="popup">
                 <div class="popup-content">
@@ -421,4 +413,72 @@
         // Use the latitude and longitude values here
         var marker = L.marker([latitude, longitude]).addTo(map);
 </script>
+{{-- <script>
+
+    let latLng1;
+
+    // Mendapatkan lokasi saat ini menggunakan geolocation API
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            // Mendapatkan koordinat latitude dan longitude
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            // Membuat objek latLng1 dengan koordinat saat ini
+            latLng1 = L.latLng(latitude, longitude);
+
+            // Melanjutkan dengan inisialisasi peta dan penggunaan koordinat
+            initializeMap(latLng1);
+        }, function(error) {
+            console.log('Gagal mendapatkan lokasi saat ini:', error);
+            // Melanjutkan dengan inisialisasi peta menggunakan koordinat default atau yang lainnya
+            initializeMap(latLng1);
+        });
+    } else {
+        console.log('Geolocation tidak didukung oleh browser.');
+        // Melanjutkan dengan inisialisasi peta menggunakan koordinat default atau yang lainnya
+        initializeMap(latLng1);
+    }
+
+    function initializeMap(latLng1) {
+        const latitude = {{ $lapangan->latitude }};
+        const longitude = {{ $lapangan->longitude }};
+        let map = L.map('map').setView([-8.8295929, 115.1567985], 13);
+        let latLng2 = L.latLng(latitude, longitude);
+        let wp1 = new L.Routing.Waypoint(latLng1);
+        let wp2 = new L.Routing.Waypoint(latLng2);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.Routing.control({
+            waypoints: [latLng1, latLng2]
+        }).addTo(map);
+
+        let routeUs = L.Routing.osrmv1();
+        routeUs.route([wp1, wp2], (err, routes) => {
+            if (!err) {
+                let best = 100000000000000;
+                let bestRoute = 0;
+                for (i in routes) {
+                    if (routes[i].summary.totalDistance < best) {
+                        bestRoute = i;
+                        best = routes[i].summary.totalDistance;
+                    }
+                }
+                console.log('best route', routes[bestRoute]);
+                // L.Routing.line(routes[bestRoute],{
+                //     styles : [
+                //         {
+                //             color : 'green',
+                //             weight : '10'
+                //         }
+                //     ]
+                // }).addTo(map);
+
+            }
+        })
+    }
+</script> --}}
 @endsection

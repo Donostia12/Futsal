@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header text-center">
-                <h3 class="card-title " >Jumlah Lapangan Futsal</h3>
+                <h3 class="card-title">Jumlah Lapangan Futsal</h3>
             </div>
             <div class="card-body"style="padding-bottom: 0;">
                 <div class="row justify-content-center">
@@ -14,15 +14,12 @@
                 </div>
                 <div class="row justify-content-center mt-4">
                     <div class="col-md-8">
-                        <canvas id="myPieChart"></canvas>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -61,13 +58,14 @@
                 borderWidth: 1
             }]
         },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
+        // options: {
+        //     animation: false, // Nonaktifkan animasi
+        //     scales: {
+        //         y: {
+        //             beginAtZero: true
+        //         }
+        //     }
+        // }
     });
 </script>
 

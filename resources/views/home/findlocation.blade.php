@@ -84,8 +84,8 @@
                     let lapanganHtml = '';
                     
                     if (index === 0) {
-                        lapanganHtml += '<h2 class="mb-1">Lokasi <span class="mb1">Terdekat</span></h2>';
-                        lapanganHtml += '<h3 class="mb-1"><a href="/detail/' + lapangan.id + '">' + lapangan.name +'<span> ' + lapangan.distance + ' Km </span>'+'</a></h3>';
+                        lapanganHtml += '<h2 class="mb-1">Lokasi <span class="mb1"> Terdekat</span><a href="/detail/' + lapangan.id + '">' +" "+ lapangan.name +'<span> ' + lapangan.distance + ' Km </span>'+'</a></h2> ' ;
+                       
                     }
                     
                     lapanganHtml += `
@@ -104,7 +104,8 @@
                                             </div>
                                         </div>
                                         <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> ${lapangan.kecamatan}</h5>
-                                        <h3 class="mb-1"><a href="/detail/${lapangan.id}">${lapangan.name}</a></h3>         
+                                        <h3 class="mb-1"><a href="/detail/${lapangan.id}">${lapangan.name}</a></h3>
+                                    
                                         <p class="border-b pb-2 mb-2">${lapangan.desc}</p>
                                         <div class="entry-meta">
                                             <div class="entry-author d-flex align-items-center">

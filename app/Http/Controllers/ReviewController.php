@@ -31,6 +31,7 @@ class ReviewController extends Controller
         $data = new review();
         $data->name = $request->input('name');
         $data->email = $request->input('email');
+        $data->rate = $request->input('rate');
         $data->desc = $request->input('desc');
         $data->id_lapangan = $request->input('id_lap');
         $data->save();

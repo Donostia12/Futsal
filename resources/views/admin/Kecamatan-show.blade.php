@@ -1,5 +1,3 @@
-
-
 @extends('admin.header')
 @section('content')
 <div class="col-12">

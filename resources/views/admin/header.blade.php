@@ -223,28 +223,28 @@
 ***********************************-->
 <!-- Required vendors -->
 
-<script src="assets/admin/vendor/global/global.min.js"></script>
-<script src="assets/admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="{{ asset('') }}assets/admin/vendor/global/global.min.js"></script>
+<script src="{{ asset('') }}assets/admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 <!-- Apex Chart -->
-<script src="assets/admin/vendor/apexchart/apexchart.js"></script>
-<script src="assets/admin/vendor/chartjs/chart.bundle.min.js"></script>
+<script src="{{ asset('') }}assets/admin/vendor/apexchart/apexchart.js"></script>
+<script src="{{ asset('') }}assets/admin/vendor/chartjs/chart.bundle.min.js"></script>
 <!-- Chart piety plugin files -->
-<script src="assets/admin/vendor/peity/jquery.peity.min.js"></script>
+<script src="{{ asset('') }}assets/admin/vendor/peity/jquery.peity.min.js"></script>
 <!-- Dashboard 1 -->
-<script src="assets/admin/js/dashboard/dashboard-1.js"></script>
-<script src="assets/admin/vendor/owl-carousel/owl.carousel.js"></script>
-<script src="assets/admin/js/custom.min.js"></script>
-<script src="assets/admin/js/dlabnav-init.js"></script>
-<script src="assets/admin/vendor/global/global.min.js"></script>
-<script src="assets/admin/vendor/chartjs/chart.bundle.min.js"></script>
+<script src="{{ asset('') }}assets/admin/js/dashboard/dashboard-1.js"></script>
+<script src="{{ asset('') }}assets/admin/vendor/owl-carousel/owl.carousel.js"></script>
+<script src="{{ asset('') }}assets/admin/js/custom.min.js"></script>
+<script src="{{ asset('') }}assets/admin/js/dlabnav-init.js"></script>
+<script src="{{ asset('') }}assets/admin/vendor/global/global.min.js"></script>
+<script src="{{ asset('') }}assets/admin/vendor/chartjs/chart.bundle.min.js"></script>
 	<!-- Apex Chart -->
-<script src="assets/admin/vendor/apexchart/apexchart.js"></script>	
+<script src="{{ asset('') }}assets/admin/vendor/apexchart/apexchart.js"></script>	
  <!-- Datatable -->
-<script src="assets/admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
-<script src="assets/admin/js/plugins-init/datatables.init.js"></script>
-<script src="assets/admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-<script src="assets/admin/js/custom.min.js"></script>
-<script src="assets/admin/js/dlabnav-init.js"></script>
+<script src="{{ asset('') }}assets/admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="{{ asset('') }}assets/admin/js/plugins-init/datatables.init.js"></script>
+<script src="{{ asset('') }}assets/admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="{{ asset('') }}assets/admin/js/custom.min.js"></script>
+<script src="{{ asset('') }}assets/admin/js/dlabnav-init.js"></script>
 <script>
 function JobickCarousel()
 	{

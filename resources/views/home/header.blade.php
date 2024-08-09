@@ -29,6 +29,10 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
     
 </head>
 
@@ -304,9 +308,9 @@
     <script src="{{asset("assets/travelin/js/particles.js")}}"></script>
     <script src="{{asset("assets/travelin/js/particlerun.js")}}"></script>
     <script src="{{asset("assets/travelin/js/plugin.js")}}"></script>
-    <script src="{{asset("assets/travelin/js/main.js")}}"></script>
     <script src="{{asset("assets/travelin/js/custom-swiper.js")}}"></script>
     <script src="{{asset("assets/travelin/js/custom-nav.js")}}"></script> --}}
+    <script src="{{asset("assets/travelin/js/main.js")}}"></script>
 </body>
 
 </html>
