@@ -294,6 +294,8 @@
                                     success: function(response) {
                                         // Format dan tampilkan hasil dalam pop-up
                                         const resultHtml = `
+                                             <p><strong>Delta Latitude:</strong> ${response.formula0}</p>
+                                        <p><strong>Delta Latitude:</strong> ${response.formula01}</p>
                                             <p><strong>Delta Latitude:</strong> ${response.formula1}</p>
                                             <p><strong>Delta Longitude:</strong> ${response.formula2}</p>
                                             <p><strong>Formula a:</strong> ${response.formula3}</p>
