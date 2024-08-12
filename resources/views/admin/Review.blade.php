@@ -20,10 +20,11 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Lapangan</th>
                             <th>Name</th>
-                            <th>email</th>
-                            <th>desc</th>
-
+                            <th>Email</th>
+                            <th>Deskripsi</th>
+                            <th>Rate</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -31,12 +32,14 @@
                         @php
                             $no =1;
                         @endphp
-                        @foreach ($review as $item)
+                        @foreach ($data as $item)
                         <tr>
                             <td>{{ $no++ }}</td>
-                            <td>{{$item->name}}</td>
-                            <td>{{$item->email}}</td>
-                            <td>{{$item->desc}}</td>
+                            <td>{{$item['lapangan']}}</td>
+                            <td>{{$item['name']}}</td>
+                            <td>{{$item['email']}}</td>
+                            <td>{{$item['desc']}}</td>
+                            <td>{{$item['rate']}}<i class="fas fa-star" style="margin-right: -3px; color: #f6b93b;"></i></td>
 
                             <td>
                                 <div class="d-flex">

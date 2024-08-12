@@ -70,8 +70,8 @@
                             <div class="row d-flex align-items-center justify-content-between">
                                 <div class="col-lg-12">
                                     <div class="form-group mb-0 text-center"><a href="{{route('location')}}">
-                                        <button class="nir-btn w-100"> <i class="fa fa-search mr-2"></i> Search
-                                            Now</button></a>
+                                        <button class="nir-btn w-100"> <i class="fa fa-search mr-2"></i> Find Near Me
+                                        </button></a>
                                        
                                     </div>
                                 </div>

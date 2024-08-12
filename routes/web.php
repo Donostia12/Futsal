@@ -34,6 +34,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     route::get('/dashboard',[UserController::class, 'dashboard'])->name('dashboard');
     Route::resource('lapangan', LapanganController::class);
     route::resource('kecamatan', KecamatanController::class);
+    Route::resource('review',ReviewController::class);
     Route::resource('image', ImageController::class);
     Route::resource('operation',OperationController::class);
     Route::view('/kecamatan-create', 'admin.kecamatan-create')->name('kecamatan-create');

@@ -91,6 +91,18 @@
                             <div class="single-title">
                                 <h2 class="mb-1">{{$lapangan->name}}</h2>
                                 <h3 class="mb-1">Rp. <span>{{$lapangan->harga}} </span> /Hours</h3>
+                                @php
+                                $rating = !empty($lapangan->rated) ? $lapangan->rated : 0;
+                                @endphp
+                                @for($i = 1; $i <= 5; $i++)
+                                    @if($rating - $i >= 0)
+                                        <i class="fas fa-star" style="margin-right: -3px; color: #f6b93b;"></i>
+                                    @elseif($rating - $i < 0 && $rating - $i > -1)
+                                        <i class="fas fa-star-half-alt" style="margin-right: -3px; color: #f6b93b;"></i>
+                                    @else
+                                        <i class="far fa-star" style="margin-right: -3px; color: #f6b93b;"></i>
+                                    @endif
+                                @endfor
                                 <div class="rating-main d-flex align-items-center">
                                     <p class="mb-0 me-2"><i class="icon-location-pin"></i> {{$lapangan->alamat}}</p>
                                 </div>
@@ -265,7 +277,7 @@
             <!-- JavaScript untuk Pop-Up Manual -->
             <script>
                 $(document).ready(function() {
-                    console.log('Jquary kontol');
+                    console.log('Jquary');
             
                     $('#haversine-btn').on('click', function() {
                         // Lokasi tujuan
@@ -322,7 +334,7 @@
             
                 // Fungsi untuk menutup pop-up
                 function closePopup() {
-                    console.log('modal nutup lah bangsat');
+                    console.log('modal nutup');
                     $('#customPopup').fadeOut(); // Sembunyikan pop-up
                 }
             </script>

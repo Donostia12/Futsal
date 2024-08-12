@@ -70,6 +70,7 @@ public function findlapangan(Request $request) {
                 'kecamatan'=> $kecamatan->name,
                 'image' => $image->image,
                 'harga' => $item->harga,
+                'rated' => $item->rated,
             ];
         } else {
             $distances[] = [
@@ -80,6 +81,7 @@ public function findlapangan(Request $request) {
                 'kecamatan'=> $kecamatan->name,
                 'image' => "Default.jpg",
                 'harga' => $item->harga,
+                'rated' => $item->rated,
             ];
         }
     }

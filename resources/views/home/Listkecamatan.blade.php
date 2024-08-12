@@ -39,15 +39,20 @@
                                 <h3 class="mb-1"><a href="{{ route('detail', ['id'=>$item['id']]) }}">{{ $item['name'] }}</a></h3>
                                 <div class="rating-main d-flex align-items-center pb-2">
                                     <div class="rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
+                                        @php
+                                        $rating = !empty($item['rated']) ? $item['rated'] : 0;
+                                        @endphp
+                                        @for($i = 1; $i <= 5; $i++)
+                                            @if($rating - $i >= 0)
+                                                <i class="fas fa-star" style="margin-right: -3px; color: #f6b93b;"></i>
+                                            @elseif($rating - $i < 0 && $rating - $i > -1)
+                                                <i class="fas fa-star-half-alt" style="margin-right: -3px; color: #f6b93b;"></i>
+                                            @else
+                                                <i class="far fa-star" style="margin-right: -3px; color: #f6b93b;"></i>
+                                            @endif
+                                        @endfor
                                     </div>
-                                    <span class="ms-2">(12)</span>
                                 </div>
-                                <p class="border-b pb-2 mb-2">{{ $item['desc'] }}</p>
                                 <div class="entry-meta">
                                     <div class="entry-author d-flex align-items-center">
                                         <p class="mb-0"><span class="theme fw-bold fs-5">{{ $item['harga'] }}</span> | Per person</p>

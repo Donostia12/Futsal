@@ -66,7 +66,7 @@
                                 <li class="submenu dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lapangan <i class="icon-arrow-down" aria-hidden="true"></i></a> 
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{route('list')}}">List Futsal</a></li>
+                                        <li><a href="{{route('list')}}">Tentukan Lokasi Mu</a></li>
                                         <li class="submenu dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kecamatan<i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                             <ul class="dropdown-menu">
@@ -84,7 +84,7 @@
                             {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="me-3">
                                 <i class="icon-user"></i> Login/Register
                             </a> --}}
-                            <a href="{{route('location')}}" class="nir-btn white">Search Now</a>
+                            <a href="{{route('location')}}" class="nir-btn white">Find Near me</a>
                         </div>
 
                         <div id="slicknav-mobile"></div>
@@ -117,7 +117,7 @@
         <!-- Instagram starts -->
         
         <!-- Instagram ends -->
-        <div class="footer-upper pb-4">
+        {{-- <div class="footer-upper pb-4">
             <div class="container">
                 <div class="row">
                     
@@ -137,7 +137,7 @@
                     
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
         <div class="footer-copyright">
@@ -198,102 +198,9 @@
                         <!-- tab contents -->
                         <div class="tab-content blog-full" id="postsTabContent">
                             <!-- popular posts -->
-                            <div aria-labelledby="login-tab" class="tab-pane fade active show" id="login"
-                                role="tabpanel">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="blog-image rounded">
-                                            <a href="#"
-                                                style="background-image: url(images/trending/trending5.jpg);"></a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <h4 class="text-center border-b pb-2">Login</h4>
-                                        <div class="log-reg-button d-flex align-items-center justify-content-between">
-                                            <button type="submit" class="btn btn-fb">
-                                                <i class="fab fa-facebook"></i> Login with Facebook
-                                            </button>
-                                            <button type="submit" class="btn btn-google">
-                                                <i class="fab fa-google"></i> Login with Google
-                                            </button>
-                                        </div>
-                                        <hr class="log-reg-hr position-relative my-4 overflow-visible">
-                                        <form method="post" action="#" name="contactform" id="contactform">
-                                            <div class="form-group mb-2">
-                                                <input type="text" name="user_name" class="form-control" id="fname"
-                                                    placeholder="User Name or Email Address">
-                                            </div>
-                                            <div class="form-group mb-2">
-                                                <input type="password" name="password_name" class="form-control"
-                                                    id="lpass" placeholder="Password">
-                                            </div>
-                                            <div class="form-group mb-2">
-                                                <input type="checkbox" class="custom-control-input" id="exampleCheck">
-                                                <label class="custom-control-label mb-0" for="exampleCheck1">Remember
-                                                    me</label>
-                                                <a class="float-end" href="#">Lost your password?</a>
-                                            </div>
-                                            <div class="comment-btn mb-2 pb-2 text-center border-b">
-                                                <input type="submit" class="nir-btn w-100" id="submit" value="Login">
-                                            </div>
-                                            <p class="text-center">Don't have an account? <a href="#"
-                                                    class="theme">Register</a></p>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <!-- Recent posts -->
-                            <div aria-labelledby="register-tab" class="tab-pane fade" id="register" role="tabpanel">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="blog-image rounded">
-                                            <a href="#"
-                                                style="background-image: url(images/trending/trending5.jpg);"></a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <h4 class="text-center border-b pb-2">Register</h4>
-                                        <div class="log-reg-button d-flex align-items-center justify-content-between">
-                                            <button type="submit" class="btn btn-fb">
-                                                <i class="fab fa-facebook"></i> Login with Facebook
-                                            </button>
-                                            <button type="submit" class="btn btn-google">
-                                                <i class="fab fa-google"></i> Login with Google
-                                            </button>
-                                        </div>
-                                        <hr class="log-reg-hr position-relative my-4 overflow-visible">
-                                        <form method="post" action="#" name="contactform1" id="contactform1">
-                                            <div class="form-group mb-2">
-                                                <input type="text" name="user_name" class="form-control" id="fname1"
-                                                    placeholder="User Name">
-                                            </div>
-                                            <div class="form-group mb-2">
-                                                <input type="text" name="user_name" class="form-control" id="femail"
-                                                    placeholder="Email Address">
-                                            </div>
-                                            <div class="form-group mb-2">
-                                                <input type="password" name="password_name" class="form-control"
-                                                    id="lpass1" placeholder="Password">
-                                            </div>
-                                            <div class="form-group mb-2">
-                                                <input type="password" name="password_name" class="form-control"
-                                                    id="lrepass" placeholder="Re-enter Password">
-                                            </div>
-                                            <div class="form-group mb-2 d-flex">
-                                                <input type="checkbox" class="custom-control-input" id="exampleCheck1">
-                                                <label class="custom-control-label mb-0 ms-1 lh-1" for="exampleCheck1">I
-                                                    have read and accept the Terms and Privacy Policy?</label>
-                                            </div>
-                                            <div class="comment-btn mb-2 pb-2 text-center border-b">
-                                                <input type="submit" class="nir-btn w-100" id="submit1"
-                                                    value="Register">
-                                            </div>
-                                            <p class="text-center">Already have an account? <a href="#"
-                                                    class="theme">Login</a></p>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

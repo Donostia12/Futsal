@@ -10,6 +10,6 @@ class review extends Model
     use HasFactory;
     protected $table ='review';
     protected $fillable =[
-        'name','email','desc','id_lapangan'
+        'name','email','desc','id_lapangan','rate'
     ];
 }

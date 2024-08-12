@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\lapangan;
 use App\Models\review;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,19 @@ class ReviewController extends Controller
     public function index()
     {
         $review = review::all();
-        return view('admin.Review',compact('review'));
+        $lapangan = lapangan::all();
+        $data = [];
+        foreach ($review as $rev) {
+            $data[] = [
+                'id' => $rev->id,
+                'name' => $rev->name,
+                'lapangan'=> lapangan::where('id', $rev->id_lapangan)->first()->name,
+                'rate' => $rev->rate,
+                'email'=> $rev->email,
+                'desc'=> $rev->desc,
+            ];
+        }
+        return view('admin.Review',compact('data'));
     }
 
     /**
@@ -36,6 +49,13 @@ class ReviewController extends Controller
         $data->desc = $request->input('desc');
         $data->id_lapangan = $request->input('id_lap');
         $data->save();
+
+        $review_avg = review::where('id_lapangan',$request->input('id_lap'))->avg('rate');
+
+
+        lapangan::where('id',$request->input('id_lap'))->update([
+            'rated' => $review_avg,
+        ]);
         return redirect()->back()->with('success', 'Review success di buat');
     }
 

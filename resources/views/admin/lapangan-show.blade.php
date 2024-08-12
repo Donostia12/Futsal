@@ -17,7 +17,7 @@
                     </div>
                     <div class="mb-3 col-md-6">
                         <label class="form-label">Harga</label>
-                        <input type="number" class="form-control" name="harga" placeholder="harga" value="{{$data->harga}}">
+                        <input type="text" class="form-control" name="harga" placeholder="harga" value="{{$data->harga}}">
                     </div>
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Desc</label>

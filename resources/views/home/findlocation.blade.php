@@ -85,7 +85,8 @@
                     
                     if (index === 0) {
                         lapanganHtml += '<h2 class="mb-1">Lokasi <span class="mb1"> Terdekat</span><a href="/detail/' + lapangan.id + '">' +" "+ lapangan.name +'<span> ' + lapangan.distance + ' Km </span>'+'</a></h2> ' ;
-                       
+                        lapanganHtml += '<hr>';
+                        lapanganHtml += '<h4 class="mb-3">Berikut Merupakan list<span class="mb-3"> lapangan futsal terdekat disekitar anda</span></a></h4> ' ;
                     }
                     
                     lapanganHtml += `
@@ -105,8 +106,25 @@
                                         </div>
                                         <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> ${lapangan.kecamatan}</h5>
                                         <h3 class="mb-1"><a href="/detail/${lapangan.id}">${lapangan.name}</a></h3>
-                                    
-                                        <p class="border-b pb-2 mb-2">${lapangan.desc}</p>
+
+                                        <div class="rating-main d-flex align-items-center pb-2">
+                                            <div class="rating">
+                                                ${(() => {
+                                                    let ratingHtml = '';
+                                                    let rating = lapangan.rated || 0;
+                                                    for (let i = 1; i <= 5; i++) {
+                                                        if (rating - i >= 0) {
+                                                            ratingHtml += '<i class="fas fa-star" style="margin-right: -3px; color: #f6b93b;"></i>';
+                                                        } else if (rating - i < 0 && rating - i > -1) {
+                                                            ratingHtml += '<i class="fas fa-star-half-alt" style="margin-right: -3px; color: #f6b93b;"></i>';
+                                                        } else {
+                                                            ratingHtml += '<i class="far fa-star" style="margin-right: -3px; color: #f6b93b;"></i>';
+                                                        }
+                                                    }
+                                                    return ratingHtml;
+                                                })()}
+                                            </div>
+                                        </div>
                                         <div class="entry-meta">
                                             <div class="entry-author d-flex align-items-center">
                                                 <p class="mb-0"><span class="theme fw-bold fs-5">${lapangan.harga}</span> | Per Hour</p>
