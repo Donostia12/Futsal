@@ -81,10 +81,6 @@
                         <input type="time" class="form-control" name="minggu_tutup" value="{{ $data->minggu_tutup }}" >
                     </div>
                 </div>
-                
-                
-                
-                
             
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

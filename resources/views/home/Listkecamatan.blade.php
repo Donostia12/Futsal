@@ -6,7 +6,8 @@
             <div class="col-lg-7">
                 <div class="section-title text-center text-lg-start">
                     <h4 class="mb-1 theme1">Top pokoknya</h4>
-                    <h2 class="mb-1">Best <span class="theme">Lapangan Futsal</span></h2>
+                
+                    <h2 class="mb-1">Best <span class="theme">Lapangan Futsal</span> <div id="terdekat"></div></h2>
                     <p>Silahkan Di Lihat2 terlebih dahulu.</p>
                 </div>
             </div>
@@ -21,7 +22,8 @@
             <div class="row item-slider">
                 @foreach ($data as $item)
               
-                @if(!empty($item)) <!-- Pastikan $item tidak kosong -->
+                @if(!empty($item)) 
+
                     <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
                         <div class="trend-item rounded box-shadow">
                             <div class="trend-image position-relative">
@@ -94,9 +96,8 @@
         let latitude = position.coords.latitude;
         let longitude = position.coords.longitude;
         let id_kecamatan = getIdKecamatanFromUrl(); // Mendapatkan id_kecamatan dari URL
-
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/findkecamatan',
+            url: 'http://127.0.0.1:85/api/findkecamatan',
             type: 'POST',
             data: {
                 id_kecamatan: id_kecamatan, // Mengirim id_kecamatan
@@ -106,6 +107,8 @@
             },
             success: function(response) {
                 let no =1;
+                const data = response.data[0];
+                $('#terdekat').text(data.name + ' terdekat' + ' | ' + data.distance + ' km');
                 response.data.forEach(function(data) {
                     // Buat teks yang akan dimasukkan ke dalam elemen dengan ID yang sesuai dengan nama
                     let distanceText = '   ' + data.distance + ' km';
