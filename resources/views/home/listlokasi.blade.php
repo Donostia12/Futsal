@@ -5,10 +5,9 @@
         <div class="row align-items-center justify-content-between mb-6 ">
             <div class="col-lg-7">
                 <div class="section-title text-center text-lg-start">
-                    <h4 class="mb-1 theme1">Pilihan Terbaik</h4>
-                    <h2 class="mb-1">Nikmati <span class="theme">Lapangan Futsal Terbaik</span></h2>
-                    <p>Temukan lapangan futsal impian Anda dan rasakan pengalaman bermain yang luar biasa. Lihat pilihan kami sekarang!</p>
-                    
+                    <h4 class="mb-1 theme1">Tentukan Lokasi Favoritmu</h4>
+                    <h2 class="mb-1">Nikmati <span class="theme">Lapangan Futsal Terbaik Pada Lokasi Yang Kamu Pilih</span></h2>
+                    <p>Berikut Lapangan Futsal Terdekat Sesuai Lokasi Pilihanmu. Jelajahi pilihan terbaik kami sekarang dan mulai petualangan futsal Anda!</p>                  
                 </div>
             </div>
             <div class="col-lg-5">
@@ -62,7 +61,7 @@
                                     </div>
                                     <div class="entry-meta">
                                         <div class="entry-author d-flex align-items-center">
-                                            <p class="mb-0"><span class="theme fw-bold fs-5">{{ $item['harga'] }}</span> | Hour</p>
+                                            <p class="mb-0"><span class="theme fw-bold fs-5">{{ $item['harga'] }}</span> / jam</p>
                                         </div>
                                     </div>
                                 </div>

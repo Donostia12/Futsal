@@ -133,7 +133,7 @@
                             </div>
                             <div class="desc-box bg-grey p-4 rounded me-md-2 mb-2">
                                 <h5 class="mb-2">No Telp</h5>
-                                <p style="text-align: center">{{$lapangan->telp}}</p>
+                                {{-- <a href="https://wa.me/"><i>test</i></a>--}}<p style="text-align: center">{{$lapangan->telp}}</p>
                             </div>
                         </div>
                     </div>
@@ -142,25 +142,21 @@
                         <h4 class="mb-2">Gallery</h4>
                         <div class="services-image d-md-flex">
                             @foreach ($image as $item)
-                                
                             <div class="me-md-2 rounded overflow-hidden mb-2"><img src="{{ asset('images/'.$item->image) }}" alt="" class="w-100"></div>
                             @endforeach
-                          
                         </div>              
                     </div>
                     <div  id="single-map" class="single-map mb-4">
                         <h4>Map</h4>
-                        
                         <div class="map rounded overflow-hidden">
                             <div style="width: 100%">
                                 <div id="map" style="width: 100%; height: 800px;"></div>
                                 <br>
-                            <div class="col-md-12">
-                                <div class="form-btn">
-                                    <a class="nir-btn" style="text-align: center" href="https://www.google.com/maps/search/?api=1&query={{$lapangan->latitude}},{{$lapangan->longitude}}">Ayo pergi sekarang</a>
-                                 
+                                <div class="col-md-12" style="display: flex; justify-content: flex-start;">
+                                    <div class="form-btn">
+                                        <a class="nir-btn" style="text-align: center; margin-left: 0;" href="https://www.google.com/maps/search/?api=1&query={{$lapangan->latitude}},{{$lapangan->longitude}}">Ayo pergi sekarang</a>
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                     </div>
@@ -186,7 +182,7 @@
                     </div>
                     {{-- review --}}
                     
-                    <button id="haversine-btn" class="nir-btn">Haversine</button>
+                    {{-- <button id="haversine-btn" class="nir-btn">Haversine</button> --}}
                     <!-- blog review -->
                     <div  id="single-add-review" class="single-add-review">
                         <br>
@@ -223,11 +219,6 @@
                                         <input type="text" name="name" class="form-control" placeholder="Name" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group mb-2">
-                                        <input type="email" name="email" class="form-control" placeholder="Email" required>
-                                    </div>
-                                </div>
                                 <div class="col-md-12">
                                     <div class="form-group mb-2">
                                         <textarea name="desc" class="form-control" placeholder="Comment" required></textarea>
@@ -235,7 +226,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-btn mb-3">
-                                        <button type="submit" class="nir-btn">Submit Review</button>
+                                        <button type="submit" class="nir-btn">Buat Review</button>
                                     </div>
                                 </div>
                             </div>
@@ -252,11 +243,12 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
-    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+             <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+            
             <!-- Modal HTML -->
-            <div id="customPopup" class="popup">
+            {{-- <div id="customPopup" class="popup">
                 <div class="popup-content">
                     <div class="popup-header">
                         <h5 id="popupTitle">Hasil Perhitungan Haversine</h5>
@@ -269,13 +261,13 @@
                         <button type="button" class="btn btn-secondary" onclick="closePopup()">Tutup</button>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             
             <!-- CSS untuk Pop-Up -->
            
             
             <!-- JavaScript untuk Pop-Up Manual -->
-            <script>
+            {{-- <script>
                 $(document).ready(function() {
                     console.log('Jquary');
             
@@ -306,8 +298,8 @@
                                     success: function(response) {
                                         // Format dan tampilkan hasil dalam pop-up
                                         const resultHtml = `
-                                             <p><strong>Delta Latitude:</strong> ${response.formula0}</p>
-                                        <p><strong>Delta Latitude:</strong> ${response.formula01}</p>
+                                            <p><strong>Delta Latitude:</strong> ${response.formula0}</p>
+                                            <p><strong>Delta Latitude:</strong> ${response.formula01}</p>
                                             <p><strong>Delta Latitude:</strong> ${response.formula1}</p>
                                             <p><strong>Delta Longitude:</strong> ${response.formula2}</p>
                                             <p><strong>Formula a:</strong> ${response.formula3}</p>
@@ -337,7 +329,7 @@
                     console.log('modal nutup');
                     $('#customPopup').fadeOut(); // Sembunyikan pop-up
                 }
-            </script>
+            </script> --}}
             
             {{-- </script> --}}
             
@@ -349,44 +341,44 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Day</th>
-                            <th>Open</th>
-                            <th>Close</th>
+                            <th>Hari</th>
+                            <th>Buka</th>
+                            <th>Tutup</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Monday</td>
+                            <td>Senin</td>
                             <td>{{$jadwal->senin_buka?? 'data tidak tersedia'}}</td>
                             <td>{{$jadwal->senin_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
-                            <td>Tuesday</td>
-                            <td>{{$jadwal->selsa_buka?? 'data tidak tersedia'}}</td>
+                            <td>Selasa</td>
+                            <td>{{$jadwal->selasa_buka?? 'data tidak tersedia'}}</td>
                             <td>{{$jadwal->selasa_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
-                            <td>Wednesday</td>
+                            <td>Rabu</td>
                             <td>{{$jadwal->rabu_buka?? 'data tidak tersedia'}}</td>
                             <td>{{$jadwal->rabu_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
-                            <td>Thursday</td>
+                            <td>Kamis</td>
                             <td>{{$jadwal->kamis_buka?? 'data tidak tersedia'}}</td>
                             <td>{{$jadwal->kamis_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
-                            <td>Friday</td>
+                            <td>Jumat</td>
                             <td>{{$jadwal->jumat_buka?? 'data tidak tersedia'}}</td>
                             <td>{{$jadwal->jumat_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
-                            <td>Saturday</td>
+                            <td>Sabtu</td>
                             <td>{{$jadwal->sabtu_buka?? 'data tidak tersedia'}}</td>
                             <td>{{$jadwal->sabtu_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
-                            <td>Sunday</td>
+                            <td>Minggu</td>
                             <td>{{$jadwal->minggu_buka?? 'data tidak tersedia'}}</td>
                             <td>{{$jadwal->minggu_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
@@ -435,9 +427,10 @@
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
             // Mendapatkan koordinat latitude dan longitude
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
-
+            // const latitude = position.coords.latitude;
+            // const longitude = position.coords.longitude;
+            const latitude = {{$latitude}};
+            const longitude = {{$longitude}};
             // Membuat objek latLng1 dengan koordinat saat ini
             latLng1 = L.latLng(latitude, longitude);
 

@@ -21,7 +21,7 @@
 	<title>admin futsal</title>
 	
 	<!-- Favicon icon -->
-	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
+	<link rel="shortcut icon" type="image/png" href="{{ asset('assets/image/futsal.png') }}">
 	
 	<!-- All StyleSheet -->
 
@@ -223,7 +223,7 @@
 ***********************************-->
 <!-- Required vendors -->
 
-<script src="{{ asset('') }}assets/admin/vendor/global/global.min.js"></script>
+{{-- <script src="{{ asset('') }}assets/admin/vendor/global/global.min.js"></script> --}}
 <script src="{{ asset('') }}assets/admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 <!-- Apex Chart -->
 <script src="{{ asset('') }}assets/admin/vendor/apexchart/apexchart.js"></script>

@@ -47,9 +47,14 @@
                             <td>
                                 <div class="d-flex">
                                     <a href="{{route('kecamatan.edit', $item->id)}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                                    <a href="{{ route('kecamatan.destroy', $item->id) }}" class="btn btn-danger shadow btn-xs sharp" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $item->id }}').submit();">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+                                    <a href="{{ route('kecamatan.destroy', $item->id) }}" class="btn btn-danger shadow btn-xs sharp" 
+                                        onclick="event.preventDefault(); 
+                                                 if(confirm('Apakah Anda yakin ingin menghapus kecamatan                                                                                                                                                                                                                                                                                                                                 ini?')) {
+                                                     document.getElementById('delete-form-{{ $item->id }}').submit();
+                                                 }">
+                                         <i class="fa fa-trash"></i>
+                                     </a>
+                                     
                                     <form id="delete-form-{{ $item->id }}" action="{{ route('kecamatan.destroy', $item->id) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')

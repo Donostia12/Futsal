@@ -149,8 +149,8 @@
                             <p class=" border-b pb-2 mb-2">${item.desc}</p>
                             <div class="entry-meta">
                                 <div class="entry-author d-flex align-items-center">
-                                    <p class="mb-0"><span class="theme fw-bold fs-5">${item.harga} </span> | Per
-                                        person</p>
+                                    <p class="mb-0"><span class="theme fw-bold fs-5">${item.harga} </span>/jam
+                                     </p>
                                 </div>
                             </div>
                         </div>

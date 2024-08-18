@@ -43,13 +43,11 @@
 
                             <td>
                                 <div class="d-flex">
-                
-                                    <form action="{{ route('review.destroy', $item['id']) }}" method="POST">
+                                    <form action="{{ route('review.destroy', $item['id']) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus review ini?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
                                     </form>
-                                  
                                 </div>												
                             </td>												
                         </tr>

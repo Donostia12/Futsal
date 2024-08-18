@@ -142,10 +142,8 @@
                         <h4 class="mb-2">Gallery</h4>
                         <div class="services-image d-md-flex">
                             @foreach ($image as $item)
-                                
                             <div class="me-md-2 rounded overflow-hidden mb-2"><img src="{{ asset('images/'.$item->image) }}" alt="" class="w-100"></div>
                             @endforeach
-                          
                         </div>              
                     </div>
                     <div  id="single-map" class="single-map mb-4">
@@ -186,7 +184,7 @@
                     </div>
                     {{-- review --}}
                     
-                    <button id="haversine-btn" class="nir-btn">Haversine</button>
+                    {{-- <button id="haversine-btn" class="nir-btn">Haversine</button> --}}
                     <!-- blog review -->
                     <div  id="single-add-review" class="single-add-review">
                         <br>
@@ -223,11 +221,6 @@
                                         <input type="text" name="name" class="form-control" placeholder="Name" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group mb-2">
-                                        <input type="email" name="email" class="form-control" placeholder="Email" required>
-                                    </div>
-                                </div>
                                 <div class="col-md-12">
                                     <div class="form-group mb-2">
                                         <textarea name="desc" class="form-control" placeholder="Comment" required></textarea>
@@ -235,7 +228,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-btn mb-3">
-                                        <button type="submit" class="nir-btn">Submit Review</button>
+                                        <button type="submit" class="nir-btn">Buat Review</button>
                                     </div>
                                 </div>
                             </div>
@@ -349,44 +342,44 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Day</th>
-                            <th>Open</th>
-                            <th>Close</th>
+                            <th>Hari</th>
+                            <th>Buka</th>
+                            <th>Tutup</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Monday</td>
+                            <td>Senin</td>
                             <td>{{$jadwal->senin_buka?? 'data tidak tersedia'}}</td>
                             <td>{{$jadwal->senin_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
-                            <td>Tuesday</td>
-                            <td>{{$jadwal->selsa_buka?? 'data tidak tersedia'}}</td>
+                            <td>Selasa</td>
+                            <td>{{$jadwal->selasa_buka?? 'data tidak tersedia'}}</td>
                             <td>{{$jadwal->selasa_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
-                            <td>Wednesday</td>
+                            <td>Rabu</td>
                             <td>{{$jadwal->rabu_buka?? 'data tidak tersedia'}}</td>
                             <td>{{$jadwal->rabu_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
-                            <td>Thursday</td>
+                            <td>Kamis</td>
                             <td>{{$jadwal->kamis_buka?? 'data tidak tersedia'}}</td>
                             <td>{{$jadwal->kamis_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
-                            <td>Friday</td>
+                            <td>Jumat</td>
                             <td>{{$jadwal->jumat_buka?? 'data tidak tersedia'}}</td>
                             <td>{{$jadwal->jumat_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
-                            <td>Saturday</td>
+                            <td>Sabtu</td>
                             <td>{{$jadwal->sabtu_buka?? 'data tidak tersedia'}}</td>
                             <td>{{$jadwal->sabtu_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
                         <tr>
-                            <td>Sunday</td>
+                            <td>Minggu</td>
                             <td>{{$jadwal->minggu_buka?? 'data tidak tersedia'}}</td>
                             <td>{{$jadwal->minggu_tutup?? 'data tidak tersedia'}}</td>
                         </tr>
@@ -402,7 +395,7 @@
 <!-- Discount action Ends -->
 
 
-{{-- <script>
+<script>
      const map = L.map('map').setView([-8.675050, 115.217402], 13);
      const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -426,8 +419,8 @@
     var longitude = {{$lapangan->longitude}};
         // Use the latitude and longitude values here
         var marker = L.marker([latitude, longitude]).addTo(map);
-</script> --}}
-<script>
+</script>
+{{-- <script>
 
     let latLng1;
 
@@ -494,5 +487,5 @@
             }
         })
     }
-</script>
+</script> --}}
 @endsection

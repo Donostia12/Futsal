@@ -48,15 +48,24 @@
                             <td>{{$item['alamat']}}</td>
                             <td>
                                 <div class="d-flex">
-                                    <a href="{{ route('lapangan.show', $item['id']) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                                    <form action="{{ route('lapangan.destroy', $item['id']) }}" method="POST">
+                                    <a href="{{ route('lapangan.show', $item['id']) }}" class="btn btn-primary shadow btn-xs sharp me-2">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <form action="{{ route('lapangan.destroy', $item['id']) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus lapangan futsal ini?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
+                                        <button type="submit" class="btn btn-danger shadow btn-xs sharp me-2">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
                                     </form>
-                                    <a href="{{ route('image.show', $item['id']) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-image"></i></a>
-                                    <a href="{{ route('operation.show', $item['id']) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-clock"></i></a>
-                                </div>												
+                                    <a href="{{ route('image.show', $item['id']) }}" class="btn btn-danger shadow btn-xs sharp me-2">
+                                        <i class="fa fa-image"></i>
+                                    </a>
+                                    <a href="{{ route('operation.show', $item['id']) }}" class="btn btn-danger shadow btn-xs sharp">
+                                        <i class="fa fa-clock"></i>
+                                    </a>
+                                </div>
+                                                                            
                             </td>												
                         </tr>
                         @endforeach
@@ -67,4 +76,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection

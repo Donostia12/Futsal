@@ -8,7 +8,7 @@
 
     <title>Find Futsal</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/image/futsal.png') }}">
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/travelin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <!--Custom CSS-->

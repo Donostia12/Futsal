@@ -27,7 +27,7 @@
                     <div class="mb-3 col-md-6">
                         <label class="form-label">Kecamatan</label>
                         <select id="inputState" class="default-select form-control wide" name="kecamatan">
-                            <option selected>Choose...</option>
+                            <option selected>Choose...</option> 
                             @foreach ($kecamatan as $item)
                             <option value="{{$item->id}}">{{$item->name}}</option>
                             @endforeach

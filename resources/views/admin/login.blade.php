@@ -21,7 +21,7 @@
 	
 	<!-- Favicon icon -->
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
-<link href="{{ asset('assets/admin/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/admin/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet">
 
 </head>
@@ -56,12 +56,9 @@
                                         </div>
                                         
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>
+                                            <button type="submit" class="btn btn-primary btn-block">Login</button>
                                         </div>
                                     </form>
-                                    <div class="new-account mt-3">
-                                        <p>Don't have an account? <a class="text-primary" href="page-register.html">Sign up</a></p>
-                                    </div>
                                 </div>
                             </div>
                         </div>

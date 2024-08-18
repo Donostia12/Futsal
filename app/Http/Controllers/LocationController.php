@@ -91,24 +91,36 @@ public function findlapangan(Request $request) {
 }
 
 public function findkecamatan(Request $request) {
-    
+    // Retrieve lapangan records based on id_kecamatan
     $lapangan = lapangan::where('id_kecamatan', $request->input('id_kecamatan'))->get();
+    
+    // Get user's latitude and longitude from the request
     $lat_users = $request->input('latitude'); 
     $lon_users = $request->input('longitude'); 
+    
+    // Initialize an array to hold distances
     $distances = [];
 
+    // Calculate distances and populate the array
     foreach ($lapangan as $item) {
         $lat_futsal = $item->latitude; 
         $lon_futsal = $item->longitude;
         $distance = $this->haversine($lat_futsal, $lon_futsal, $lat_users, $lon_users);
 
         $distances[] = [
-        'name' => $item->name,
-        'distance' => $distance,
+            'name' => $item->name,
+            'distance' => $distance,
         ];
     }
+
+    // Convert the distances array to a collection
     $distances = collect($distances);
-    return response()->json(array('data' => $distances), 200);
+    
+    // Sort the collection by distance
+    $distances = $distances->sortBy('distance');
+    
+    // Return the sorted data as JSON
+    return response()->json(['data' => $distances->values()], 200);
 }
 
 

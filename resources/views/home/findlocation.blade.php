@@ -84,7 +84,7 @@
                     let lapanganHtml = '';
                     
                     if (index === 0) {
-                        lapanganHtml += '<h2 class="mb-1">Lokasi <span class="mb1"> Terdekat</span><a href="/detail/' + lapangan.id + '">' +" "+ lapangan.name +'<span> ' + lapangan.distance + ' Km </span>'+'</a></h2> ' ;
+                        lapanganHtml += '<h2 class="mb-1">Lapangan <span class="mb1"> Terdekat disekitarmu</span><a href="/detail/' + lapangan.id + '">' +" "+ lapangan.name +'<span> ' + lapangan.distance + ' Km </span>'+'</a></h2> ' ;
                         lapanganHtml += '<hr>';
                         lapanganHtml += '<h4 class="mb-3">Berikut Merupakan list<span class="mb-3"> lapangan futsal terdekat disekitar anda</span></a></h4> ' ;
                     }
@@ -127,7 +127,7 @@
                                         </div>
                                         <div class="entry-meta">
                                             <div class="entry-author d-flex align-items-center">
-                                                <p class="mb-0"><span class="theme fw-bold fs-5">${lapangan.harga}</span> | Per Hour</p>
+                                                <p class="mb-0"><span class="theme fw-bold fs-5">${lapangan.harga}</span> / Hour</p>
                                             </div>
                                         </div>
                                     </div>
