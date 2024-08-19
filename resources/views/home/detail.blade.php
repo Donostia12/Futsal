@@ -133,7 +133,8 @@
                             </div>
                             <div class="desc-box bg-grey p-4 rounded me-md-2 mb-2">
                                 <h5 class="mb-2">No Telp</h5>
-                                <p style="text-align: center">{{$lapangan->telp}}</p>
+                                <a href="https://wa.me/{{$lapangan->telp}} target"><i>{{$lapangan->telp}}</i></a>
+                                {{-- <p style="text-align: center">{{$lapangan->telp}}</p> --}}
                             </div>
                         </div>
                     </div>
