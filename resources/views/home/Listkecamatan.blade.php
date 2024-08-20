@@ -108,7 +108,7 @@
             success: function(response) {
                 let no =1;
                 const data = response.data[0];
-                $('#terdekat').text(data.name + ' terdekat' + ' | ' + data.distance + ' km');
+                $('#terdekat').text(response.data[1].name + ' terdekat' + ' | ' + response.data[0].distance + ' km');
                 response.data.forEach(function(data) {
                     // Buat teks yang akan dimasukkan ke dalam elemen dengan ID yang sesuai dengan nama
                     let distanceText = '   ' + data.distance + ' km';
