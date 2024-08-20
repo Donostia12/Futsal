@@ -168,6 +168,7 @@ public function findlokasi(Request $request) {
                 'desc' => $item->desc,
                 'distance' => $distance,
                 'kecamatan'=> $kecamatan1->name,
+                'harga' => $item->harga,
                 'image' => $image->image,
                 'rated' => $item->rated,
             ];
