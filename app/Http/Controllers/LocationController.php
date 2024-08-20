@@ -20,7 +20,7 @@ class LocationController extends Controller
         $kecamatan1 = kecamatan::where('id', $id)->first();
         $kecamatan = kecamatan::all();
         $lapangan = lapangan::where('id_kecamatan', $id)->get();
-        
+
         $data[] = [];
         foreach ($lapangan as $lap) {
             $image = image::where('id_lapangan', $lap->id)->first();
@@ -46,7 +46,6 @@ class LocationController extends Controller
         }
         return view('home.Listkecamatan', compact('data','kecamatan','id'));
     }
-
     
 public function findlapangan(Request $request) {
     $lapang = lapangan::all();
@@ -105,12 +104,32 @@ public function findkecamatan(Request $request) {
     foreach ($lapangan as $item) {
         $lat_futsal = $item->latitude; 
         $lon_futsal = $item->longitude;
+        $image = image::where('id_lapangan', $item->id)->first();
+        $kecamatan = kecamatan::where('id', $item->id_kecamatan)->first();
         $distance = $this->haversine($lat_futsal, $lon_futsal, $lat_users, $lon_users);
 
-        $distances[] = [
-            'name' => $item->name,
-            'distance' => $distance,
-        ];
+        if ($image) {
+            $distances[] = [
+                'id' => $item->id,
+                'name' => $item->name,
+                'distance' => $distance,
+                'kecamatan'=> $kecamatan->name,
+                'image' => $image->image,
+                'harga' => $item->harga,
+                'rated' => $item->rated,
+             
+            ];
+        } else {
+            $distances[] = [
+                'id' => $item->id,
+                'name' => $item->name,
+                'distance' => $distance,
+                'kecamatan'=> $kecamatan->name,
+                'image' => "Default.jpg",
+               'harga' => $item->harga,
+               'rated' => $item->rated,
+            ];
+        }
     }
 
     // Convert the distances array to a collection
@@ -150,7 +169,7 @@ public function findlokasi(Request $request) {
                 'distance' => $distance,
                 'kecamatan'=> $kecamatan1->name,
                 'image' => $image->image,
-                'harga' => $item->harga,
+                'rated' => $item->rated,
             ];
         } else {
             $distances[] = [
@@ -161,6 +180,7 @@ public function findlokasi(Request $request) {
                 'kecamatan'=> $kecamatan1->name,
                 'image' => "Default.jpg",
                 'harga' => $item->harga,
+                'rated' => $item->rated,
             ];
         }
     }

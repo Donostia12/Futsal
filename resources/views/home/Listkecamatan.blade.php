@@ -5,70 +5,22 @@
         <div class="row align-items-center justify-content-between mb-6 ">
             <div class="col-lg-12">
                 <div class="section-title text-center text-lg-start">
-                    <h2 class="mb-1">Lapangan Terdekat yang ada di kecamatan<span class="theme"><div id="terdekat"></div></span></h2>
+                  
+                    <h2 class="mb-1"><span class="theme"><div id="terdekat"></div></span></h2>
                     <hr>
-                    <p>Berikut list lapangan futsal di kecamatan </p>
+                 
                 </div>
             </div>
             <div class="col-lg-5">
-
             </div>
         </div>
-       @php
-            $no =1
-       @endphp
+     
         <div class="trend-box">
             <div class="row item-slider">
-                @foreach ($data as $item)
-              
-                @if(!empty($item)) 
-                    <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
-                        <a href="{{ route('detail', ['id'=>$item['id']]) }}">
-                            <div class="trend-item rounded box-shadow">
-                                <div class="trend-image position-relative">
-                                    <img src="{{ asset('images/' . $item['image']) }}" alt="image">
-                                    <div class="color-overlay"></div>
-                                </div>
-                                <div class="trend-content p-4 pt-5 position-relative">
-                                    <div class="trend-meta bg-theme white px-3 py-2 rounded">
-                                        <div class="entry-author">
-                                            <i class="icon-calendar"></i>
-                                            <span class="fw-bold" id="{{$no}}"> km</span>
-                                        </div>
-                                    </div>
-                                    <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> {{ $item['kecamatan'] }}</h5>
-                                    <h3 class="mb-1"><a href="{{ route('detail', ['id'=>$item['id']]) }}">{{ $item['name'] }}</a></h3>
-                                    <div class="rating-main d-flex align-items-center pb-2">
-                                        <div class="rating">
-                                            @php
-                                            $rating = !empty($item['rated']) ? $item['rated'] : 0;
-                                            @endphp
-                                            @for($i = 1; $i <= 5; $i++)
-                                                @if($rating - $i >= 0)
-                                                    <i class="fas fa-star" style="margin-right: -3px; color: #f6b93b;"></i>
-                                                @elseif($rating - $i < 0 && $rating - $i > -1)
-                                                    <i class="fas fa-star-half-alt" style="margin-right: -3px; color: #f6b93b;"></i>
-                                                @else
-                                                    <i class="far fa-star" style="margin-right: -3px; color: #f6b93b;"></i>
-                                                @endif
-                                            @endfor
-                                        </div>
-                                    </div>
-                                    <div class="entry-meta">
-                                        <div class="entry-author d-flex align-items-center">
-                                            <p class="mb-0"><span class="theme fw-bold fs-5">{{ $item['harga'] }}</span> /Jam</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                   @php
-                       $no++
-                   @endphp
-                @endif
-            @endforeach
-            
+               
+                <div class="row item-slider" id="lapangan-container">
+                    <!-- The lapangan items will be appended here -->
+                </div>
             </div>
         </div>
     </div>
@@ -106,25 +58,16 @@
                 _token: '{{ csrf_token() }}' // CSRF token untuk Laravel
             },
             success: function(response) {
-                let no =1;
-                const data = response.data[0];
-                $('#terdekat').text(response.data[1].name + ' terdekat' + ' | ' + response.data[0].distance + ' km');
-                response.data.forEach(function(data) {
-                    // Buat teks yang akan dimasukkan ke dalam elemen dengan ID yang sesuai dengan nama
-                    let distanceText = '   ' + data.distance + ' km';
-
-                    // Temukan elemen dengan ID yang sama dengan 'name' dari respons
-                    $('#' + no).text(distanceText);
-                    no++;
-                });
+                $('#name_kecamatan').text("Lapangan Terdekat yang ada di kecamatan "+response.data[0].kecamatan);
+              
+                updateUI(response.data);
             },
             error: function(xhr, status, error) {
                 console.error('Error:', error);
             }
         });
     }
-
-    // Function to handle geolocation errors
+    
     function showError(error) {
         switch(error.code) {
             case error.PERMISSION_DENIED:
@@ -143,13 +86,69 @@
     }
 
     // Function to update UI (dummy function, implement as needed)
-    function updateUI(data) {
-        console.log(data);
-        // Update UI with the data from the response
-    }
+    function updateUI(lapangans) {
+                $('#lapangan-container').empty(); // Clear previous content
 
-    // Call getLocation to start the process
-    getLocation();
-});
+                lapangans.forEach(function(lapangan, index) {
+                    let lapanganHtml = '';
+                    
+                    if (index === 0) {
+                        lapanganHtml += '<h2 class="mb-1">Lapangan <span class="mb1"> Terdekat disekitarmu</span><a href="/detail/' + lapangan.id + '">' +" "+ lapangan.name +'<span> ' + lapangan.distance + ' Km </span>'+'</a></h2> ' ;
+                        lapanganHtml += '<hr>';
+                        lapanganHtml += '<h4 class="mb-3">Berikut Merupakan list<span class="mb-3"> lapangan futsal terdekat '+ lapangan.kecamatan +'</span></a></h4> ' ;
+                    }
+                    
+                    lapanganHtml += `
+                        <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
+                            <a href="/detail/${lapangan.id}">
+                                <div class="trend-item rounded box-shadow">
+                                    <div class="trend-image position-relative">
+                                        ${lapangan.image ? `<img src="/images/${lapangan.image}" alt="image" class="">` : ''}
+                                        <div class="color-overlay"></div>
+                                    </div>
+                                    <div class="trend-content p-4 pt-5 position-relative">
+                                        <div class="trend-meta bg-theme white px-3 py-2 rounded">
+                                            <div class="entry-author">
+                                                <i class="icon-location-pin"></i> 
+                                                <span class="fw-bold">${lapangan.distance} km</span>
+                                            </div>
+                                        </div>
+                                        <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> ${lapangan.kecamatan}</h5>
+                                        <h3 class="mb-1"><a href="/detail/${lapangan.id}">${lapangan.name}</a></h3>
+
+                                        <div class="rating-main d-flex align-items-center pb-2">
+                                            <div class="rating">
+                                                ${(() => {
+                                                    let ratingHtml = '';
+                                                    let rating = lapangan.rated || 0;
+                                                    for (let i = 1; i <= 5; i++) {
+                                                        if (rating - i >= 0) {
+                                                            ratingHtml += '<i class="fas fa-star" style="margin-right: -3px; color: #f6b93b;"></i>';
+                                                        } else if (rating - i < 0 && rating - i > -1) {
+                                                            ratingHtml += '<i class="fas fa-star-half-alt" style="margin-right: -3px; color: #f6b93b;"></i>';
+                                                        } else {
+                                                            ratingHtml += '<i class="far fa-star" style="margin-right: -3px; color: #f6b93b;"></i>';
+                                                        }
+                                                    }
+                                                    return ratingHtml;
+                                                })()}
+                                            </div>
+                                        </div>
+                                        <div class="entry-meta">
+                                            <div class="entry-author d-flex align-items-center">
+                                                <p class="mb-0"><span class="theme fw-bold fs-5">${lapangan.harga}</span> / Hour</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    `;
+                    $('#lapangan-container').append(lapanganHtml);
+                });
+            }
+
+            getLocation();
+        });
 </script>
 @endsection

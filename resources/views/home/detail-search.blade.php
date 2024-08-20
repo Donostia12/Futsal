@@ -188,7 +188,7 @@
                     <div  id="single-add-review" class="single-add-review">
                         <br>
                         <h4>Write a Review</h4>
-                        <form action="{{route('review.store')}}" method="POST">
+                        <form action="{{route('review_store')}}" method="POST">
                             @csrf
                             <div class="row">
                                 <input type="text" name="id_lap" value="{{$id}}" hidden>

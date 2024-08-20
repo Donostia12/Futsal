@@ -29,9 +29,7 @@ class ReviewController extends Controller
         return view('admin.Review',compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+   
     public function create()
     {
        
@@ -42,21 +40,7 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new review();
-        $data->name = $request->input('name');
-        $data->email = $request->input('email');
-        $data->rate = $request->input('rate');
-        $data->desc = $request->input('desc');
-        $data->id_lapangan = $request->input('id_lap');
-        $data->save();
-
-        $review_avg = review::where('id_lapangan',$request->input('id_lap'))->avg('rate');
-
-
-        lapangan::where('id',$request->input('id_lap'))->update([
-            'rated' => $review_avg,
-        ]);
-        return redirect()->back()->with('success', 'Review success di buat');
+       
     }
 
     /**
@@ -91,5 +75,23 @@ class ReviewController extends Controller
         $data = review::find($id);
         $data->delete();
         return redirect()->Route('review.index')->with('success', 'Review success di hapus');
+    }
+    public function review_store(Request $request)
+    {
+        $data = new review();
+        $data->name = $request->input('name');
+     
+        $data->rate = $request->input('rate');
+        $data->desc = $request->input('desc');
+        $data->id_lapangan = $request->input('id_lap');
+        $data->save();
+
+        $review_avg = review::where('id_lapangan',$request->input('id_lap'))->avg('rate');
+
+
+        lapangan::where('id',$request->input('id_lap'))->update([
+            'rated' => $review_avg,
+        ]);
+        return redirect()->back()->with('success', 'Review success di buat');
     }
 }

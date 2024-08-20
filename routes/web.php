@@ -28,7 +28,7 @@ Route::fallback(function () {
     return redirect()->route('home')->with('error', 'Invalid request method or route');
 });
 
-Route::resource('review',ReviewController::class);
+Route::post('/review_store', [ReviewController::class, 'review_store'])->name('review_store');
 
 Route::middleware([AdminMiddleware::class])->group(function () {
     route::get('/dashboard',[UserController::class, 'dashboard'])->name('dashboard');
