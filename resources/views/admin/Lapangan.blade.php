@@ -31,6 +31,8 @@
                             <th>Jumlah Lapangan</th>
                             <th>Alamat</th>
                             <th>Deskripsi</th>
+                            <th>Status-IMG</th>
+                            <th>Status-Op</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -48,6 +50,8 @@
                             <td class="text-center align-middle">{{$item['jumlah']}}</td>
                             <td>{{$item['alamat']}}</td>
                             <td>{{$item['desc']}}</td>	
+                            <td>{{$item['image-status']}}</td>
+                            <td>{{$item['operation-status']}}</td>
                             <td>
                                 <div class="d-flex">
                                     <a href="{{ route('lapangan.show', $item['id']) }}" class="btn btn-primary shadow btn-xs sharp me-2">

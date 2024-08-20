@@ -19,7 +19,20 @@ class LapanganController extends Controller
         $lapangan = lapangan::all();
         $kecamatan = kecamatan::all();
         $data = [];
+       
         foreach ($lapangan as $lap) {
+            $image = image::where('id_lapangan', $lap->id)->first(); 
+            $operation = Operation::where('id_lapangan', $lap->id)->first();
+            if ($image) {
+                $imagestatus = "ada";
+            }else{
+                $imagestatus = "kosong";
+            }
+            if ($operation) {
+                $opstatus = "ada";
+            }else{
+                $opstatus = "kosong";
+            }
             $data[] = [
                 'id' => $lap->id,
                 'name' => $lap->name,
@@ -29,6 +42,9 @@ class LapanganController extends Controller
                 'telp'=> $lap->telp,
                 'desc'=> $lap->desc,
                 'alamat'=> $lap->alamat,
+                'image-status'=>$imagestatus,
+                'operation-status'=>$opstatus
+               
             ];
         }
     return view('admin.lapangan', compact('data'));
@@ -51,6 +67,7 @@ class LapanganController extends Controller
                     'image' => 'Default.jpg',
                     'telp'=> $lap->telp,
                     'desc'=> $lap->desc,
+                    
                 ];
             }else{
                 $data[] = [
