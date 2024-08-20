@@ -31,14 +31,14 @@ class ImageController extends Controller
     {
     if ($request->hasFile('name')) {
         $image = $request->file('name');
-        $imageName = Hash::make(time()) . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('images'), $imageName);
-       
-        $imageModel = new Image();
-        $imageModel->image = $imageName;
-        $imageModel->id_lapangan = $request->input('id');
-        $imageModel->save();
-        return redirect()->back()->with('success', 'Image uploaded successfully.');
+        $imageName =time().'.'.$image->getClientOriginalExtension();
+        if($image->move(public_path('images'), $imageName)){
+            $imageModel = new Image();
+            $imageModel->image = $imageName;
+            $imageModel->id_lapangan = $request->input('id');
+            $imageModel->save();
+            return redirect()->back()->with('success', 'Image uploaded successfully.');
+        }
     } else {
         return redirect()->back()->with('error', 'No image selected.');
     }
