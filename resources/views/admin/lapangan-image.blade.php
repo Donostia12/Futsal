@@ -45,16 +45,23 @@
                             <td>{{$item->created_at}}</td>
                             <td>
                                 <div class="d-flex">
-                                  
-                                    <a href="{{ route('image.destroy', $item->id) }}" class="btn btn-danger shadow btn-xs sharp" onclick="event.preventDefault(); document.getElementById('delete-form-{{$item->id}}').submit();">
+                                    <a href="{{ route('image.destroy', $item->id) }}" class="btn btn-danger shadow btn-xs sharp" 
+                                       onclick="event.preventDefault(); confirmDeletion({{ $item->id }});">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                     <form id="delete-form-{{$item->id}}" action="{{ route('image.destroy', $item->id) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
-                             
-                                </div>												
+                                </div>	
+                                <script>
+                                    function confirmDeletion(id) {
+                                        if (confirm('Apakah Anda yakin ingin menghapus image ini?')) {
+                                            document.getElementById('delete-form-' + id).submit();
+                                        }
+                                    }
+                                </script>
+                                                                            
                             </td>												
                         </tr>
                         @endforeach

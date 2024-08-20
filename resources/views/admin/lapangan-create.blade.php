@@ -12,21 +12,21 @@
                 <div class="row">
                     <div class="mb-3 col-md-6">
                         <label class="form-label">Nama Lapangan Futsal</label>
-                        <input type="text" class="form-control" name="name" placeholder="Nama Lapangan futsal">
+                        <input type="text" class="form-control" name="name" placeholder="Nama Lapangan futsal" required>
                     </div>
                     <div class="mb-3 col-md-6">
                         <label class="form-label">Harga</label>
-                        <input type="text" class="form-control" name="harga" placeholder="harga">
+                        <input type="text" class="form-control" name="harga" placeholder="harga" required>
                     </div>
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Desc</label>
-                        <input type="text" class="form-control" name="desc" placeholder="Masukan deskripsi disini">
+                        <input type="text" class="form-control" name="desc" placeholder="Masukan deskripsi disini" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="mb-3 col-md-6">
                         <label class="form-label">Kecamatan</label>
-                        <select id="inputState" class="default-select form-control wide" name="kecamatan">
+                        <select id="inputState" class="default-select form-control wide" name="kecamatan" required>
                             <option selected>Choose...</option> 
                             @foreach ($kecamatan as $item)
                             <option value="{{$item->id}}">{{$item->name}}</option>
@@ -35,25 +35,25 @@
                     </div>
                     <div class="mb-3 col-md-6">
                         <label class="form-label">No telp</label>
-                        <input type="text" class="form-control" name="telp" placeholder="Nomer Telpon">
+                        <input type="text" class="form-control" name="telp" placeholder="Nomer Telpon" required>
                     </div>
                     <div class="mb-3 col-md-6">
                         <label class="form-label">Alamat</label>
-                        <input type="text" class="form-control" name="alamat" placeholder="Masukan Alamat">
+                        <input type="text" class="form-control" name="alamat" placeholder="Masukan Alamat" required>
                     </div>
                     <div class="mb-3 col-md-6">
                         <label class="form-label">Jumlah Lapangan</label>
-                        <input type="text" class="form-control" name="jml" placeholder="Masukan Jumlah Lapangan">
+                        <input type="text" class="form-control" name="jml" placeholder="Masukan Jumlah Lapangan" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="mb-3 col-md-6">
                         <label class="form-label">latitude</label>
-                        <input type="text" class="form-control" name="latitude" id="lat">
+                        <input type="text" class="form-control" name="latitude" id="lat" required>
                     </div>
                     <div class="mb-3 col-md-6">
                         <label class="form-label">logitude</label>
-                        <input type="text" class="form-control" name="longitude" id="long">
+                        <input type="text" class="form-control" name="longitude" id="long" required>
                     </div>
                     <div class="mb-3 col-md-12">
                        
