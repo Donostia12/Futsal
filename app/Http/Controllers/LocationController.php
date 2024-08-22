@@ -188,11 +188,10 @@ public function findlokasi(Request $request) {
 
     // Urutkan hasil berdasarkan jarak
     $distances = collect($distances)->sortBy('distance')->values()->all();
-    // $distancesfar = collect($distances)->sortByDesc('distance')->values()->all();
+    
     // Kirim data ke view
     return view('home.listlokasi', compact('distances', 'kecamatan', 'lat', 'lng'));
-    // $distance = $this->haversine(-8.644123, 116.21123122, $lat, $lng);
-    // return $distance;
+    
 }
 
 
@@ -242,7 +241,7 @@ public function findlokasi(Request $request) {
         
             // Rumus Haversine
             $a = sin($dLat / 2) * sin($dLat / 2) +
-                cos($lat1) * cos($lat2) *
+                cos(deg2rad($lat1)) * cos(deg2rad($lat2)) *
                 sin($dLon / 2) * sin($dLon / 2);
         
             $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
@@ -259,19 +258,16 @@ public function findlokasi(Request $request) {
             $deltaLatitude = $latitude2 - $latitude1;
             $deltaLongitude = $longitude2 - $longitude1;
             // Formulas
-            $formula0 = "Delta Latitude: " . $latitude2 . " - " . $latitude1 . " = " . $deltaLatitude;
-            $formula01= "Delta Longitude: " . $longitude2 . " - " . $longitude1 . " = " . $deltaLongitude;
+            
             $formula1 = "Delta Latitude: " . round(deg2rad($lat_users), 6) . " - " . round(deg2rad($lat_futsal), 6) . " = " . round($dLat, 6);
             $formula2 = "Delta Longitude: " . round(deg2rad($lon_users), 6) . " - " . round(deg2rad($lon_futsal), 6) . " = " . round($dLon, 6);
-            $formula3 = "a = sin($dLat / 2)^2 + cos($lat1) * cos($lat2) * sin($dLon / 2)^2 = " . round($a, 6);
+            $formula3 = "a = sin^2($dLat / 2) + cos($lat1) * cos($lat2) * sin^2($dLon / 2)^2 = " . round($a, 6);
             $formula4 = "c = 2 * atan2(sqrt($a), sqrt(1 - $a)) = " . round($c, 6);
             $formula5 = "distance = $R * $c = " . $distance;
         
             // Kembalikan jarak dalam format JSON
             return response()->json([
                 'distance' => $distance,
-                'formula0' => $formula0,
-                'formula01' => $formula01,
                 'formula1' => $formula1,
                 'formula2' => $formula2,
                 'formula3' => $formula3,
