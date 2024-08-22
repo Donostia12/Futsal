@@ -58,7 +58,7 @@
                 _token: '{{ csrf_token() }}' // CSRF token untuk Laravel
             },
             success: function(response) {
-                $('#name_kecamatan').text("Lapangan Terdekat yang ada di kecamatan "+response.data[0].kecamatan);
+               
               
                 updateUI(response.data);
             },

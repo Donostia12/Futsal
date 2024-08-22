@@ -133,7 +133,7 @@
                             </div>
                             <div class="desc-box bg-grey p-4 rounded me-md-2 mb-2">
                                 <h5 class="mb-2">No Telp</h5>
-                                <a href="https://wa.me/{{$lapangan->telp}}"><i>test</i></a>
+                                <a href="https://wa.me/{{$lapangan->telp}}" target="_blank"><i>{{$lapangan->telp}}</i></a>
                                 {{-- <p style="text-align: center">{{$lapangan->telp}}</p> --}}
                             </div>
                         </div>
@@ -249,7 +249,7 @@
              <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
             
             <!-- Modal HTML -->
-            {{-- <div id="customPopup" class="popup">
+            <div id="customPopup" class="popup">
                 <div class="popup-content">
                     <div class="popup-header">
                         <h5 id="popupTitle">Hasil Perhitungan Haversine</h5>
@@ -262,13 +262,13 @@
                         <button type="button" class="btn btn-secondary" onclick="closePopup()">Tutup</button>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             
             <!-- CSS untuk Pop-Up -->
            
             
             <!-- JavaScript untuk Pop-Up Manual -->
-            {{-- <script>
+            <script>
                 $(document).ready(function() {
                     console.log('Jquary');
             
@@ -299,8 +299,7 @@
                                     success: function(response) {
                                         // Format dan tampilkan hasil dalam pop-up
                                         const resultHtml = `
-                                            <p><strong>Delta Latitude:</strong> ${response.formula0}</p>
-                                            <p><strong>Delta Latitude:</strong> ${response.formula01}</p>
+                                        
                                             <p><strong>Delta Latitude:</strong> ${response.formula1}</p>
                                             <p><strong>Delta Longitude:</strong> ${response.formula2}</p>
                                             <p><strong>Formula a:</strong> ${response.formula3}</p>
@@ -330,7 +329,7 @@
                     console.log('modal nutup');
                     $('#customPopup').fadeOut(); // Sembunyikan pop-up
                 }
-            </script> --}}
+            </script> 
             
             {{-- </script> --}}
             
